@@ -1,7 +1,10 @@
+import Navbar from "./components/Navbar"
+
 function App() {
-  return (<>
-    <h1> VIT Typing Stats </h1>
-  </>
+  return (
+    <>
+      <Navbar />
+    </>
   )
 }
 
