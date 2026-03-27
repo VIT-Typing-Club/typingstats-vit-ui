@@ -15,12 +15,16 @@ export const apiClient = async <T>(
   })
 
   if (res.status === 401) {
-    useAuthStore.getState().clearAuth();
+    useAuthStore.getState().clearAuth()
     throw new Error("Unauthorized")
   }
 
   if (!res.ok) {
     throw new Error(`Request failed: ${res.status}`)
+  }
+
+  if (res.status === 204) {
+    return null as T
   }
 
   return res.json()
