@@ -6,8 +6,8 @@ import AuthProvider from "./components/AuthProvider"
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AuthProvider >
+    <AuthProvider>
       <App />
     </AuthProvider>
-  </StrictMode >,
+  </StrictMode>,
 )
