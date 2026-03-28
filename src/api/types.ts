@@ -12,6 +12,8 @@ export type User = {
   typeggId: string
   xUrl: string
   instagramUrl: string
+  lastManualSync: string | null;
+  lastAutoSync: string | null;
 }
 
 export type UserRanks = {

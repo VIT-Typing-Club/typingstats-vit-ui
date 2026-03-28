@@ -30,3 +30,6 @@ export const confirmCollegeOtp = (code: string) =>
 
 export const fetchPublicProfile = (username: string) =>
     apiClient<PublicProfile>(`/api/users/${username}`, { method: "GET" });
+
+export const syncMonkeytypeScore = () =>
+    apiClient<{ message: string }>("/api/users/@me/sync", { method: "POST" });
