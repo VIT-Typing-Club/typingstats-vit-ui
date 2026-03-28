@@ -1,8 +1,8 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Navbar from "@/components/Navbar";
-import SettingsPage from "@/pages/SettingsPage";
-import HomePage from "./pages/HomePage";
-import PublicProfilePage from "./pages/ProfilePage";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
+import Navbar from "@/components/Navbar"
+import SettingsPage from "@/pages/SettingsPage"
+import HomePage from "./pages/HomePage"
+import PublicProfilePage from "./pages/ProfilePage"
 
 function RootLayout() {
   return (
@@ -12,7 +12,7 @@ function RootLayout() {
       </main>
       <Navbar />
     </div>
-  );
+  )
 }
 
 const router = createBrowserRouter([
@@ -34,8 +34,8 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+])
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }

@@ -1,64 +1,68 @@
-import { useEffect, useRef } from "react";
-import { useTypeggStore } from "@/store/typeggStore";
-import { useAuthStore } from "@/store/authStore";
+import { useEffect, useRef } from "react"
+import { useTypeggStore } from "@/store/typeggStore"
+import { useAuthStore } from "@/store/authStore"
 
-import DailyQuoteCard from "@/components/DailyQuoteCard";
-import LeaderboardTable from "@/components/LeaderboardTable";
-import LiveTimers from "@/components/LiveTimers";
-import { useNow } from "@/hooks/useNow";
+import DailyQuoteCard from "@/components/DailyQuoteCard"
+import LeaderboardTable from "@/components/LeaderboardTable"
+import LiveTimers from "@/components/LiveTimers"
+import { useNow } from "@/hooks/useNow"
 
 export default function DailyCompetitionPage() {
-  const user = useAuthStore((s) => s.user);
+  const user = useAuthStore((s) => s.user)
 
-  const quote = useTypeggStore((s) => s.quote);
-  const leaderboard = useTypeggStore((s) => s.leaderboard);
-  const loading = useTypeggStore((s) => s.loading);
-  const syncing = useTypeggStore((s) => s.syncing);
-  const error = useTypeggStore((s) => s.error);
+  const quote = useTypeggStore((s) => s.quote)
+  const leaderboard = useTypeggStore((s) => s.leaderboard)
+  const loading = useTypeggStore((s) => s.loading)
+  const syncing = useTypeggStore((s) => s.syncing)
+  const error = useTypeggStore((s) => s.error)
 
-  const fetchDaily = useTypeggStore((s) => s.fetchDaily);
-  const syncScore = useTypeggStore((s) => s.syncScore);
+  const fetchDaily = useTypeggStore((s) => s.fetchDaily)
+  const syncScore = useTypeggStore((s) => s.syncScore)
 
-  const SYNC_COOLDOWN = 60 * 1000;
-  const AUTO_SYNC_INTERVAL = 60 * 60 * 1000;
-
-  useEffect(() => {
-    fetchDaily();
-  }, [fetchDaily]);
-
-  const now = useNow();
-
-  const lastManualSync = user?.lastTypeggManualSync ? new Date(user.lastTypeggManualSync).getTime() : 0;
-  const lastAutoSync = user?.lastTypeggAutoSync ? new Date(user.lastTypeggAutoSync).getTime() : 0;
-
-  const nextManualSyncTime = lastManualSync + SYNC_COOLDOWN;
-  const nextAutoSyncTime = lastAutoSync + AUTO_SYNC_INTERVAL;
-  const nextQuoteTime = quote ? new Date(quote.endDate).getTime() : 0;
-
-  const hasTriggeredAutoFetch = useRef(false);
+  const SYNC_COOLDOWN = 60 * 1000
+  const AUTO_SYNC_INTERVAL = 60 * 60 * 1000
 
   useEffect(() => {
-    if (!user) return;
+    fetchDaily()
+  }, [fetchDaily])
+
+  const now = useNow()
+
+  const lastManualSync = user?.lastTypeggManualSync
+    ? new Date(user.lastTypeggManualSync).getTime()
+    : 0
+  const lastAutoSync = user?.lastTypeggAutoSync
+    ? new Date(user.lastTypeggAutoSync).getTime()
+    : 0
+
+  const nextManualSyncTime = lastManualSync + SYNC_COOLDOWN
+  const nextAutoSyncTime = lastAutoSync + AUTO_SYNC_INTERVAL
+  const nextQuoteTime = quote ? new Date(quote.endDate).getTime() : 0
+
+  const hasTriggeredAutoFetch = useRef(false)
+
+  useEffect(() => {
+    if (!user) return
     if (now >= nextAutoSyncTime && !hasTriggeredAutoFetch.current) {
-      hasTriggeredAutoFetch.current = true;
-      useAuthStore.getState().fetchUser();
-      fetchDaily();
+      hasTriggeredAutoFetch.current = true
+      useAuthStore.getState().fetchUser()
+      fetchDaily()
     } else if (now < nextAutoSyncTime) {
-      hasTriggeredAutoFetch.current = false;
+      hasTriggeredAutoFetch.current = false
     }
-  }, [now, nextAutoSyncTime, user, fetchDaily]);
+  }, [now, nextAutoSyncTime, user, fetchDaily])
 
-  const canManualSync = now >= nextManualSyncTime;
+  const canManualSync = now >= nextManualSyncTime
 
-  let syncButtonText = "> ./sync_score.sh";
-  if (syncing) syncButtonText = "> syncing...";
-  else if (!canManualSync) syncButtonText = "> ERR: COOLDOWN_ACTIVE";
+  let syncButtonText = "> ./sync_score.sh"
+  if (syncing) syncButtonText = "> syncing..."
+  else if (!canManualSync) syncButtonText = "> ERR: COOLDOWN_ACTIVE"
 
-  if (loading && !quote) return <div className="p-4 font-mono text-subtext0">Loading pane...</div>;
+  if (loading && !quote)
+    return <div className="p-4 font-mono text-subtext0">Loading pane...</div>
 
   return (
     <div className="flex flex-col h-full bg-base overflow-hidden">
-
       {/* Tmux Pane Header - Fixed */}
       <div className="bg-mantle border-strong px-3 py-1.5 flex justify-between items-center font-mono text-xs uppercase tracking-widest text-subtext0 shrink-0">
         <span>[Daily Competition]</span>
@@ -68,10 +72,17 @@ export default function DailyCompetitionPage() {
       {error ? (
         <div className="p-4 text-red text-sm font-mono shrink-0">
           <p>ERR: {error}</p>
-          <button onClick={fetchDaily} className="mt-2 text-lavender hover:underline">Retry Connection</button>
+          <button
+            onClick={fetchDaily}
+            className="mt-2 text-lavender hover:underline"
+          >
+            Retry Connection
+          </button>
         </div>
       ) : !quote ? (
-        <div className="p-4 text-subtext0 italic font-mono shrink-0">No active quote for today yet. Check back later.</div>
+        <div className="p-4 text-subtext0 italic font-mono shrink-0">
+          No active quote for today yet. Check back later.
+        </div>
       ) : (
         <>
           {/* META BLOCK - Fixed at top, no scrolling */}
@@ -80,9 +91,15 @@ export default function DailyCompetitionPage() {
               <LiveTimers label="next_quote_in  :" targetTime={nextQuoteTime} />
               {user && (
                 <>
-                  <LiveTimers label="next_auto_sync :" targetTime={nextAutoSyncTime} />
+                  <LiveTimers
+                    label="next_auto_sync :"
+                    targetTime={nextAutoSyncTime}
+                  />
                   {!canManualSync && (
-                    <LiveTimers label="manual_sync_in :" targetTime={nextManualSyncTime} />
+                    <LiveTimers
+                      label="manual_sync_in :"
+                      targetTime={nextManualSyncTime}
+                    />
                   )}
                 </>
               )}
@@ -114,5 +131,5 @@ export default function DailyCompetitionPage() {
         </>
       )}
     </div>
-  );
+  )
 }

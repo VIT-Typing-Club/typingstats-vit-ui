@@ -13,8 +13,8 @@ export type User = {
   typeggId: string
   xUrl: string
   instagramUrl: string
-  lastManualSync: string | null;
-  lastAutoSync: string | null;
+  lastManualSync: string | null
+  lastAutoSync: string | null
 }
 
 export type UserRanks = {
@@ -46,40 +46,46 @@ export type DailyLeaderboardResponse = {
 }
 
 export type TestType =
-  | "TIME_15" | "TIME_30" | "TIME_60" | "TIME_120"
-  | "WORDS_10" | "WORDS_25" | "WORDS_50" | "WORDS_100";
+  | "TIME_15"
+  | "TIME_30"
+  | "TIME_60"
+  | "TIME_120"
+  | "WORDS_10"
+  | "WORDS_25"
+  | "WORDS_50"
+  | "WORDS_100"
 
 export type MonkeytypeLeaderboardEntry = {
-  discordId: string;
-  username: string;
-  displayName: string;
-  avatarUrl: string;
-  wpm: number;
-  accuracy: number;
-  raw: number;
+  discordId: string
+  username: string
+  displayName: string
+  avatarUrl: string
+  wpm: number
+  accuracy: number
+  raw: number
   testType: TestType
   createdAt: Date
-};
+}
 
 export type UserUpdateRequest = {
-  displayName?: string;
-  collegeEmail?: string;
-  mtUrl?: string;
-  linkedinUrl?: string;
-  githubUrl?: string;
-  xUrl?: string;
-  instagramUrl?: string;
-};
+  displayName?: string
+  collegeEmail?: string
+  mtUrl?: string
+  linkedinUrl?: string
+  githubUrl?: string
+  xUrl?: string
+  instagramUrl?: string
+}
 
 export type PublicProfile = {
-  displayName: string | null;
-  discordUsername: string;
-  avatarUrl: string | null;
-  mtUrl: string | null;
-  mtVerified: boolean;
-  typeggUsername: string | null;
-  linkedinUrl: string | null;
-  githubUrl: string | null;
-  xUrl: string | null;
-  instagramUrl: string | null;
-};
+  displayName: string | null
+  discordUsername: string
+  avatarUrl: string | null
+  mtUrl: string | null
+  mtVerified: boolean
+  typeggUsername: string | null
+  linkedinUrl: string | null
+  githubUrl: string | null
+  xUrl: string | null
+  instagramUrl: string | null
+}

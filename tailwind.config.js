@@ -7,9 +7,9 @@ export default {
     extend: {
       colors: {
         // ── Base surfaces ──────────────────────────────────────────────
-        base:     "#1e2030",  // page background
-        mantle:   "#181926",  // navbar, card backgrounds
-        crust:    "#0f1016",  // deepest surface / borders on dark panels
+        base: "#1e2030", // page background
+        mantle: "#181926", // navbar, card backgrounds
+        crust: "#0f1016", // deepest surface / borders on dark panels
 
         // ── Surface layers (elevation) ─────────────────────────────────
         surface0: "#1e2030",
@@ -22,31 +22,31 @@ export default {
         overlay2: "#939ab7",
 
         // ── Text ───────────────────────────────────────────────────────
-        text:     "#cad3f5",   // primary
-        subtext1: "#b8c0e0",   // secondary / labels
-        subtext0: "#a5adcb",   // muted / placeholders
+        text: "#cad3f5", // primary
+        subtext1: "#b8c0e0", // secondary / labels
+        subtext0: "#a5adcb", // muted / placeholders
 
         // ── Accents ────────────────────────────────────────────────────
-        lavender: "#b7bdf8",   // primary interactive / focus rings
-        mauve:    "#c6a0f6",   // rank badges / highlights
-        blue:     "#8aadf4",   // links
-        sapphire: "#7dc4e4",   // info states
-        sky:      "#91d7e3",   // secondary info
-        teal:     "#8bd5ca",   // accents / tags
+        lavender: "#b7bdf8", // primary interactive / focus rings
+        mauve: "#c6a0f6", // rank badges / highlights
+        blue: "#8aadf4", // links
+        sapphire: "#7dc4e4", // info states
+        sky: "#91d7e3", // secondary info
+        teal: "#8bd5ca", // accents / tags
 
         // ── Semantic ──────────────────────────────────────────────────
-        green:    "#a6da95",   // success / WPM gains / verified
-        yellow:   "#eed49f",   // warning / caution
-        peach:    "#f5a97f",   // mid-tier / notice
-        red:      "#ed8796",   // errors / declines
-        maroon:   "#ee99a0",   // soft error variant
-        flamingo: "#f0c6c6",   // very soft
-        rosewater:"#f4dbd6",   // lightest accent
+        green: "#a6da95", // success / WPM gains / verified
+        yellow: "#eed49f", // warning / caution
+        peach: "#f5a97f", // mid-tier / notice
+        red: "#ed8796", // errors / declines
+        maroon: "#ee99a0", // soft error variant
+        flamingo: "#f0c6c6", // very soft
+        rosewater: "#f4dbd6", // lightest accent
       },
 
       fontFamily: {
-        mono:  ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-        sans:  ['"Sora"', 'ui-sans-serif', 'sans-serif'],
+        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+        sans: ['"Sora"', "ui-sans-serif", "sans-serif"],
         // Use font-mono for all stats/WPM/rank numbers
         // Use font-sans for all UI copy / labels
       },
@@ -54,47 +54,47 @@ export default {
       fontSize: {
         // Tight typographic scale for dense terminal UIs
         "2xs": ["0.625rem", { lineHeight: "1rem" }],
-        xs:    ["0.75rem",  { lineHeight: "1.125rem" }],
-        sm:    ["0.8125rem",{ lineHeight: "1.25rem" }],
-        base:  ["0.875rem", { lineHeight: "1.5rem" }],
-        lg:    ["1rem",     { lineHeight: "1.5rem" }],
-        xl:    ["1.125rem", { lineHeight: "1.75rem" }],
-        "2xl": ["1.25rem",  { lineHeight: "1.75rem" }],
-        "3xl": ["1.5rem",   { lineHeight: "2rem" }],
+        xs: ["0.75rem", { lineHeight: "1.125rem" }],
+        sm: ["0.8125rem", { lineHeight: "1.25rem" }],
+        base: ["0.875rem", { lineHeight: "1.5rem" }],
+        lg: ["1rem", { lineHeight: "1.5rem" }],
+        xl: ["1.125rem", { lineHeight: "1.75rem" }],
+        "2xl": ["1.25rem", { lineHeight: "1.75rem" }],
+        "3xl": ["1.5rem", { lineHeight: "2rem" }],
       },
 
       borderColor: {
         // Much darker, true terminal-divider color
         DEFAULT: "#363a4f", // Catppuccin Surface1
-        subtle:  "#24273a", // Catppuccin Surface0
-        strong:  "#494d64", // Catppuccin Surface2
-        accent:  "#b7bdf8", // Lavender
+        subtle: "#24273a", // Catppuccin Surface0
+        strong: "#494d64", // Catppuccin Surface2
+        accent: "#b7bdf8", // Lavender
       },
 
       boxShadow: {
-        card:   "0 1px 3px 0 rgba(0,0,0,0.4), 0 0 0 1px rgba(110,115,141,0.15)",
-        glow:   "0 0 0 2px rgba(183,189,248,0.35)",
+        card: "0 1px 3px 0 rgba(0,0,0,0.4), 0 0 0 1px rgba(110,115,141,0.15)",
+        glow: "0 0 0 2px rgba(183,189,248,0.35)",
         "glow-green": "0 0 0 2px rgba(166,218,149,0.35)",
       },
 
       keyframes: {
         "pulse-dot": {
           "0%, 100%": { opacity: "1" },
-          "50%":       { opacity: "0.35" },
+          "50%": { opacity: "0.35" },
         },
         "slide-in": {
           from: { opacity: "0", transform: "translateY(6px)" },
-          to:   { opacity: "1", transform: "translateY(0)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
         "count-up": {
           from: { opacity: "0", transform: "translateY(4px)" },
-          to:   { opacity: "1", transform: "translateY(0)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
         "pulse-dot": "pulse-dot 1.4s ease-in-out infinite",
-        "slide-in":  "slide-in 0.22s ease-out both",
-        "count-up":  "count-up 0.18s ease-out both",
+        "slide-in": "slide-in 0.22s ease-out both",
+        "count-up": "count-up 0.18s ease-out both",
       },
     },
   },
