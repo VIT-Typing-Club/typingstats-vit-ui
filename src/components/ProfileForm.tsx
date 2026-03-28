@@ -13,6 +13,8 @@ export default function ProfileForm() {
         mtUrl: "",
         linkedinUrl: "",
         githubUrl: "",
+        xUrl: "",
+        instagramUrl: "",
     });
 
     const [saving, setSaving] = useState(false);
@@ -27,6 +29,8 @@ export default function ProfileForm() {
                 mtUrl: user.mtUrl || "",
                 linkedinUrl: user.linkedinUrl || "",
                 githubUrl: user.githubUrl || "",
+                xUrl: user.xUrl || "",
+                instagramUrl: user.instagramUrl || ""
             });
         }
     }, [user]);
@@ -93,6 +97,14 @@ export default function ProfileForm() {
                 <input id="githubUrl" name="githubUrl" value={formData.githubUrl} onChange={handleChange} />
             </div>
 
+            <div>
+                <label htmlFor="xUrl">X URL</label>
+                <input id="xUrl" name="xUrl" value={formData.xUrl} onChange={handleChange} />
+            </div>
+            <div>
+                <label htmlFor="instagramUrl">Instagram URL</label>
+                <input id="instagramUrl" name="instagramUrl" value={formData.instagramUrl} onChange={handleChange} />
+            </div>
             <button type="submit" disabled={saving}>
                 {saving ? "Saving..." : "Save Changes"}
             </button>

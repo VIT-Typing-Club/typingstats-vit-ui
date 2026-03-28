@@ -110,6 +110,24 @@ export default function PublicProfilePage() {
                                     LinkedIn
                                 </a>
                             )}
+                            {profile.xUrl && (
+                                <a
+                                    href={`https://x.com/${profile.xUrl}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    X
+                                </a>
+                            )}
+                            {profile.instagramUrl && (
+                                <a
+                                    href={`https://instagram.com/${profile.instagramUrl}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Instagram
+                                </a>
+                            )}
                         </div>
                     </li>
                 )}

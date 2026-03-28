@@ -10,6 +10,8 @@ export type User = {
   collegeVerified: boolean
   mtVerified: boolean
   typeggId: string
+  xUrl: string
+  instagramUrl: string
 }
 
 export type UserRanks = {
@@ -62,6 +64,8 @@ export type UserUpdateRequest = {
   mtUrl?: string;
   linkedinUrl?: string;
   githubUrl?: string;
+  xUrl?: string;
+  instagramUrl?: string;
 };
 
 export type PublicProfile = {
@@ -73,4 +77,6 @@ export type PublicProfile = {
   typeggUsername: string | null;
   linkedinUrl: string | null;
   githubUrl: string | null;
+  xUrl: string | null;
+  instagramUrl: string | null;
 };

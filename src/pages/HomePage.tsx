@@ -8,8 +8,8 @@ export default function HomePage() {
     return (
         <>
             <DailyCompetitionPage />
-            <MonkeytypeLeaderboardsPage />
             {user ? <UserRanksCard /> : <></>}
+            <MonkeytypeLeaderboardsPage />
         </>
     )
 }
