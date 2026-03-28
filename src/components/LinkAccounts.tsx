@@ -2,6 +2,27 @@ import { useState } from "react";
 import { useAuthStore } from "@/store/authStore";
 import { verifyMonkeytype, verifyTypegg, sendCollegeOtp, confirmCollegeOtp } from "@/api/user";
 
+type ActionButtonProps = {
+    onClick: () => void;
+    disabled: boolean;
+    loadingText?: string;
+    text: string;
+    isCancel?: boolean;
+};
+
+const ActionButton = ({ onClick, disabled, loadingText, text, isCancel = false }: ActionButtonProps) => (
+    <button
+        onClick={onClick}
+        disabled={disabled}
+        className={`px-4 py-1.5 font-mono text-xs sm:text-sm border transition-all cursor-pointer ${isCancel
+            ? "border-surface2 text-subtext0 hover:bg-surface0 hover:text-text"
+            : "border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed"
+            }`}
+    >
+        {disabled && loadingText ? `> ${loadingText}` : `> ${text}`}
+    </button>
+);
+
 export default function LinkAccounts() {
     const user = useAuthStore((s) => s.user);
     const fetchUser = useAuthStore((s) => s.fetchUser);
@@ -44,111 +65,120 @@ export default function LinkAccounts() {
         });
     };
 
-    const handleMonkeytypeVerify = () => {
-        handleVerify("monkeytype", () => verifyMonkeytype(user.mtUrl));
-    };
-
     const renderMonkeytype = () => {
-        if (user.mtVerified) {
-            return <span style={{ color: "green" }}>✓ Verified ({user.mtUrl})</span>;
-        }
+        if (user.mtVerified) return <span className="text-green font-mono text-sm">✓ Verified ({user.mtUrl})</span>;
 
         return (
-            <>
-                <span style={{ color: "orange", display: "block" }}>⚠ Not Verified</span>
-                <p style={{ margin: "0.5rem 0" }}><small>Ensure your Monkeytype bio contains [VIT] before verifying. You may remove that after verification.</small></p>
-                <button
-                    onClick={handleMonkeytypeVerify}
+            <div className="space-y-3">
+                <span className="inline-block px-2 py-0.5 bg-peach/10 text-peach border border-peach/20 text-xs font-mono uppercase tracking-wider">⚠ Unverified</span>
+                <p className="text-subtext0 text-xs font-mono leading-relaxed max-w-md">
+                    Ensure your bio contains <span className="text-mauve bg-surface0 px-1">[VIT]</span> before verifying. You may remove it after.
+                </p>
+                <ActionButton
+                    onClick={() => handleVerify("monkeytype", () => verifyMonkeytype(user.mtUrl))}
                     disabled={loadingType !== null || !user.mtUrl}
-                >
-                    {loadingType === "monkeytype" ? "Verifying..." : "Verify Monkeytype"}
-                </button>
-            </>
+                    loadingText="verifying..."
+                    text="verify_monkeytype"
+                />
+            </div>
         );
     };
 
     const renderTypegg = () => {
-        if (user.typeggId) {
-            return <span style={{ color: "green" }}>✓ Linked ({user.typeggId})</span>;
-        }
+        if (user.typeggId) return <span className="text-green font-mono text-sm">✓ Linked ({user.typeggId})</span>;
 
         return (
-            <>
-                <span style={{ color: "orange", display: "block" }}>⚠ Not Linked</span>
-                <p style={{ margin: "0.5rem 0" }}><small>Your Discord account must be linked to your TypeGG profile.</small></p>
-                <button
+            <div className="space-y-3">
+                <span className="inline-block px-2 py-0.5 bg-peach/10 text-peach border border-peach/20 text-xs font-mono uppercase tracking-wider">⚠ Unlinked</span>
+                <p className="text-subtext0 text-xs font-mono leading-relaxed max-w-md">
+                    Your Discord account must be linked to your TypeGG profile to sync scores.
+                </p>
+                <ActionButton
                     onClick={() => handleVerify("typegg", verifyTypegg)}
                     disabled={loadingType !== null}
-                >
-                    {loadingType === "typegg" ? "Linking..." : "Link TypeGG"}
-                </button>
-            </>
+                    loadingText="linking..."
+                    text="link_typegg"
+                />
+            </div>
         );
     };
 
     const renderEmail = () => {
-        if (user.collegeVerified) {
-            return <span style={{ color: "green" }}>✓ Verified ({user.collegeEmail})</span>;
-        }
+        if (user.collegeVerified) return <span className="text-green font-mono text-sm">✓ Verified ({user.collegeEmail})</span>;
 
         if (showOtpInput) {
             return (
-                <div style={{ marginTop: "0.5rem" }}>
-                    <span style={{ color: "orange", display: "block", marginBottom: "0.5rem" }}>⚠ OTP Sent</span>
-                    <input
-                        type="text"
-                        placeholder="Enter 6-digit OTP"
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
-                        style={{ marginRight: "0.5rem" }}
-                    />
-                    <button
-                        onClick={handleConfirmOtp}
-                        disabled={loadingType === "email_confirm" || otp.length < 4}
-                    >
-                        {loadingType === "email_confirm" ? "Verifying..." : "Confirm OTP"}
-                    </button>
-                    <button onClick={() => setShowOtpInput(false)} style={{ marginLeft: "0.5rem" }}>Cancel</button>
+                <div className="space-y-3 bg-crust p-3 border border-surface1 rounded-sm mt-2">
+                    <span className="text-lavender font-mono text-xs uppercase tracking-wider block">Enter OTP Sent to Email</span>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                        <input
+                            type="text"
+                            placeholder="6-digit code"
+                            value={otp}
+                            onChange={(e) => setOtp(e.target.value)}
+                            className="bg-mantle border border-surface2 rounded-sm px-3 py-1.5 text-text font-mono text-sm focus:outline-none focus:border-lavender w-full sm:w-auto"
+                        />
+                        <div className="flex gap-2 shrink-0">
+                            <ActionButton
+                                onClick={handleConfirmOtp}
+                                disabled={loadingType === "email_confirm" || otp.length < 4}
+                                loadingText="verifying..."
+                                text="confirm_otp"
+                            />
+                            <ActionButton onClick={() => setShowOtpInput(false)} disabled={false} isCancel text="cancel" />
+                        </div>
+                    </div>
                 </div>
             );
         }
 
         return (
-            <>
-                <span style={{ color: "orange", display: "block", marginBottom: "0.5rem" }}>⚠ Not Verified</span>
-                <button
-                    onClick={handleSendOtp}
-                    disabled={loadingType !== null || !user.collegeEmail}
-                >
-                    {loadingType === "email_send" ? "Sending..." : "Send OTP to Email"}
-                </button>
-            </>
+            <div className="space-y-3">
+                <span className="inline-block px-2 py-0.5 bg-peach/10 text-peach border border-peach/20 text-xs font-mono uppercase tracking-wider">⚠ Unverified</span>
+                <div className="block">
+                    <ActionButton
+                        onClick={handleSendOtp}
+                        disabled={loadingType !== null || !user.collegeEmail}
+                        loadingText="sending..."
+                        text="send_otp"
+                    />
+                </div>
+            </div>
         );
     };
 
-    const liStyle = { marginBottom: "1.5rem", paddingBottom: "1.5rem", borderBottom: "1px solid #eee" };
-
     return (
-        <div>
-            <h2>Linked Accounts & Verification</h2>
-            {error && <div style={{ color: "red", marginBottom: "1rem" }}>{error}</div>}
+        <div className="flex flex-col h-full bg-base">
+            <div className="bg-mantle border-strong px-3 py-1.5 flex justify-between items-center font-mono text-xs uppercase tracking-widest text-subtext0 shrink-0">
+                <span>[System_Integrations]</span>
+            </div>
 
-            <ul style={{ listStyle: "none", padding: 0 }}>
-                <li style={liStyle}>
-                    <strong style={{ display: "block", marginBottom: "0.5rem" }}>Monkeytype Account</strong>
-                    <div>{renderMonkeytype()}</div>
-                </li>
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-6">
+                {error && <div className="mb-6 p-3 bg-red/10 border border-red/30 text-red font-mono text-xs">&gt; ERR: {error}</div>}
 
-                <li style={liStyle}>
-                    <strong style={{ display: "block", marginBottom: "0.5rem" }}>TypeGG Account</strong>
-                    <div>{renderTypegg()}</div>
-                </li>
+                <div className="space-y-6">
+                    <div className="pb-6 border-b border-subtle">
+                        <h3 className="font-mono text-sm text-text font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span className="text-mauve">#</span> Monkeytype Protocol
+                        </h3>
+                        {renderMonkeytype()}
+                    </div>
 
-                <li style={liStyle}>
-                    <strong style={{ display: "block", marginBottom: "0.5rem" }}>VIT Student Email</strong>
-                    <div>{renderEmail()}</div>
-                </li>
-            </ul>
+                    <div className="pb-6 border-b border-subtle">
+                        <h3 className="font-mono text-sm text-text font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span className="text-mauve">#</span> TypeGG Protocol
+                        </h3>
+                        {renderTypegg()}
+                    </div>
+
+                    <div className="pb-2">
+                        <h3 className="font-mono text-sm text-text font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span className="text-mauve">#</span> Institutional Auth
+                        </h3>
+                        {renderEmail()}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
