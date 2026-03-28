@@ -44,12 +44,12 @@ const FetchRow = memo(
             href={linkUrl}
             target="_blank"
             rel="noreferrer"
-            className="text-text hover:text-mauve hover:underline transition-colors truncate max-w-[200px] sm:max-w-xs"
+            className="text-text hover:text-mauve hover:underline transition-colors truncate max-w-50 sm:max-w-xs"
           >
             {value}
           </a>
         ) : (
-          <span className="text-text truncate max-w-[200px] sm:max-w-xs">
+          <span className="text-text truncate max-w-50 sm:max-w-xs">
             {value}
           </span>
         )}
@@ -78,23 +78,23 @@ export default function PublicProfilePage() {
 
     let isMounted = true
 
-    ;(async () => {
-      try {
-        const data = await fetchPublicProfile(username)
-        if (!isMounted) return
+      ; (async () => {
+        try {
+          const data = await fetchPublicProfile(username)
+          if (!isMounted) return
 
-        setProfile(data)
-        setError(null)
-      } catch (err: unknown) {
-        if (!isMounted) return
+          setProfile(data)
+          setError(null)
+        } catch (err: unknown) {
+          if (!isMounted) return
 
-        setError(err instanceof Error ? err.message : "User not found")
-      } finally {
-        if (isMounted) {
-          setLoading(false)
+          setError(err instanceof Error ? err.message : "User not found")
+        } finally {
+          if (isMounted) {
+            setLoading(false)
+          }
         }
-      }
-    })()
+      })()
 
     return () => {
       isMounted = false
