@@ -63,3 +63,14 @@ export type UserUpdateRequest = {
   linkedinUrl?: string;
   githubUrl?: string;
 };
+
+export type PublicProfile = {
+  displayName: string | null;
+  discordUsername: string;
+  avatarUrl: string | null;
+  mtUrl: string | null;
+  mtVerified: boolean;
+  typeggUsername: string | null;
+  linkedinUrl: string | null;
+  githubUrl: string | null;
+};

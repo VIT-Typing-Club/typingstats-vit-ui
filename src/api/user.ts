@@ -1,5 +1,5 @@
 import { apiClient } from "@/api/client";
-import type { User, UserUpdateRequest } from "./types";
+import type { PublicProfile, User, UserUpdateRequest } from "./types";
 
 export const updateProfile = (data: UserUpdateRequest) =>
     apiClient<User>("/api/users/@me", {
@@ -27,3 +27,6 @@ export const confirmCollegeOtp = (code: string) =>
         method: "POST",
         body: JSON.stringify({ code })
     });
+
+export const fetchPublicProfile = (username: string) =>
+    apiClient<PublicProfile>(`/api/users/${username}`, { method: "GET" });
