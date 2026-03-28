@@ -5,6 +5,7 @@ import {
   verifyTypegg,
   sendCollegeOtp,
   confirmCollegeOtp,
+  deleteUser,
 } from "@/api/user"
 
 type ActionButtonProps = {
@@ -25,10 +26,11 @@ const ActionButton = ({
   <button
     onClick={onClick}
     disabled={disabled}
-    className={`px-4 py-1.5 font-mono text-xs sm:text-sm border transition-all cursor-pointer ${isCancel
-      ? "border-surface2 text-subtext0 hover:bg-surface0 hover:text-text"
-      : "border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed"
-      }`}
+    className={`px-4 py-1.5 font-mono text-xs sm:text-sm border transition-all cursor-pointer ${
+      isCancel
+        ? "border-surface2 text-subtext0 hover:bg-surface0 hover:text-text"
+        : "border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed"
+    }`}
   >
     {disabled && loadingText ? `> ${loadingText}` : `> ${text}`}
   </button>
@@ -43,6 +45,9 @@ export default function LinkAccounts() {
 
   const [showOtpInput, setShowOtpInput] = useState(false)
   const [otp, setOtp] = useState("")
+
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+  const [deleting, setDeleting] = useState(false)
 
   if (!user) return null
 
@@ -85,10 +90,21 @@ export default function LinkAccounts() {
   }
 
   const handleTypeggVerify = () => {
-    handleVerify(
-      "typegg_verify",
-      () => verifyTypegg(user.username)
-    )
+    handleVerify("typegg_verify", () => verifyTypegg(user.username))
+  }
+
+  const handleDeleteAccount = async () => {
+    setDeleting(true)
+    setError(null)
+
+    try {
+      await deleteUser()
+      window.location.href = "/"
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to delete account")
+    } finally {
+      setDeleting(false)
+    }
   }
 
   const renderMonkeytype = () => {
@@ -239,6 +255,48 @@ export default function LinkAccounts() {
               <span className="text-mauve">#</span> Institutional Auth
             </h3>
             {renderEmail()}
+          </div>
+          <div className="pt-6 border-t border-red/20">
+            <h3 className="font-mono text-sm text-red font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+              <span>#</span> Danger Zone
+            </h3>
+
+            {!showDeleteConfirm ? (
+              <div className="space-y-3">
+                <p className="text-subtext0 text-xs font-mono max-w-md">
+                  Deleting your account will permanently erase all your data.
+                  This action cannot be undone.
+                </p>
+
+                <ActionButton
+                  onClick={() => setShowDeleteConfirm(true)}
+                  disabled={false}
+                  text="delete_user"
+                  isCancel
+                />
+              </div>
+            ) : (
+              <div className="space-y-3 bg-red/10 border border-red/30 p-3 rounded-sm">
+                <p className="text-red text-xs font-mono">
+                  CONFIRM: This will permanently delete your account.
+                </p>
+
+                <div className="flex gap-2">
+                  <ActionButton
+                    onClick={handleDeleteAccount}
+                    disabled={deleting}
+                    loadingText="deleting..."
+                    text="confirm_delete"
+                  />
+                  <ActionButton
+                    onClick={() => setShowDeleteConfirm(false)}
+                    disabled={false}
+                    isCancel
+                    text="cancel"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

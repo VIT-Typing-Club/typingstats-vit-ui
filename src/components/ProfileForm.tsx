@@ -119,10 +119,11 @@ export default function ProfileForm() {
   }
 
   const sanitize = (data: UserUpdateRequest): UserUpdateRequest => {
-    return Object.fromEntries(Object.entries(data).map(([key, value]) => [
-      key,
-      value === "" ? null : value,
-    ])
+    return Object.fromEntries(
+      Object.entries(data).map(([key, value]) => [
+        key,
+        value === "" ? null : value,
+      ]),
     ) as UserUpdateRequest
   }
 

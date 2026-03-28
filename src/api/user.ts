@@ -16,7 +16,7 @@ export const verifyMonkeytype = (username: string) =>
 export const verifyTypegg = (username: string) =>
   apiClient<{ message: string }>("/api/verify/typegg", {
     method: "POST",
-    body: JSON.stringify({ username })
+    body: JSON.stringify({ username }),
   })
 
 export const sendCollegeOtp = (email: string) =>
@@ -36,3 +36,9 @@ export const fetchPublicProfile = (username: string) =>
 
 export const syncMonkeytypeScore = () =>
   apiClient<{ message: string }>("/api/users/@me/sync", { method: "POST" })
+
+export const deleteUser = () => {
+  apiClient<User>("/api/users/@me", {
+    method: "DELETE",
+  })
+}
