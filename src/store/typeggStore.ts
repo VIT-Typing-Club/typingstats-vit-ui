@@ -51,7 +51,7 @@ export const useTypeggStore = create<TypeggState>((set) => ({
       if (data) {
         set({ quote: data.quote, leaderboard: data.leaderboard })
       }
-      await useAuthStore.getState().fetchUser();
+      await useAuthStore.getState().fetchUser()
     } catch (err: unknown) {
       const message =
         err instanceof Error

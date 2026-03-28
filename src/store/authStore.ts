@@ -19,19 +19,19 @@ export const useAuthStore = create<AuthState>((set) => ({
   loading: false,
 
   fetchUser: async () => {
-    set({ loading: true });
+    set({ loading: true })
 
     try {
       const [user, ranks] = await Promise.all([
         fetchCurrentUser(),
         fetchUserRanks().catch(() => null),
-      ]);
+      ])
 
-      set({ user, ranks });
+      set({ user, ranks })
     } catch {
-      set({ user: null, ranks: null });
+      set({ user: null, ranks: null })
     } finally {
-      set({ loading: false });
+      set({ loading: false })
     }
   },
 
