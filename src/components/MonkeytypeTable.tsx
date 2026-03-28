@@ -65,9 +65,11 @@ export default function MonkeytypeTable({ leaderboard }: Props) {
                     ) : (
                       <div className="w-5 h-5 rounded-full bg-surface2 ring-1 ring-surface1 shrink-0" />
                     )}
-                    <span className="truncate max-w-30 sm:max-w-50">
-                      {entry.displayName || entry.username}
-                    </span>
+                    <a href={`/profile/${entry.username}`}>
+                      <span className="truncate max-w-30 sm:max-w-50">
+                        {entry.displayName || entry.username}
+                      </span>
+                    </a>
                   </div>
                 </td>
 
