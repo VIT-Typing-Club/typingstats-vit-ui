@@ -1,0 +1,31 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, frontend]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t typingstats-frontend .
+
+      - name: Stop old container
+        run: |
+          docker stop typingstats-frontend || true
+          docker rm typingstats-frontend || true
+
+      - name: Run new container
+        run: |
+          docker run -d \
+            --name typingstats-frontend \
+            -p 3000:80 \
+            --restart unless-stopped \
+            typingstats-frontend
