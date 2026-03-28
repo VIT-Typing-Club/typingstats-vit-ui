@@ -6,7 +6,7 @@ import PublicProfilePage from "./pages/ProfilePage"
 
 function RootLayout() {
   return (
-    <div className="flex flex-col h-[100dvh] w-full bg-base text-text overflow-hidden font-sans selection:bg-surface2">
+    <div className="flex flex-col h-dvh w-full bg-base text-text overflow-hidden font-sans selection:bg-surface2">
       <main className="flex-1 min-h-0 overflow-hidden w-full">
         <Outlet />
       </main>
