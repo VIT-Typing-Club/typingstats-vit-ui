@@ -36,3 +36,19 @@ export type DailyLeaderboardResponse = {
   quote: DailyQuote
   leaderboard: TypeggLeaderboardEntry[]
 }
+
+export type TestType =
+  | "TIME_15" | "TIME_30" | "TIME_60" | "TIME_120"
+  | "WORDS_10" | "WORDS_25" | "WORDS_50" | "WORDS_100";
+
+export type MonkeytypeLeaderboardEntry = {
+  discordId: string;
+  username: string;
+  displayName: string;
+  avatarUrl: string;
+  wpm: number;
+  accuracy: number;
+  raw: number;
+  testType: TestType
+  createdAt: Date
+};
