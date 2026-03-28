@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar"
+import UserRanksCard from "./components/UserRanksCard"
 import DailyCompetitionPage from "./pages/DailyCompetitionPage"
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <Navbar />
       <DailyCompetitionPage />
+      <UserRanksCard />
     </>
   )
 }
