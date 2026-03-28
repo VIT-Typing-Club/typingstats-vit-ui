@@ -7,10 +7,12 @@ import {
   confirmCollegeOtp,
   deleteUser,
 } from "@/api/user"
+import { logout } from "@/api/auth"
 
 type ActionButtonProps = {
   onClick: () => void
   disabled: boolean
+  loading?: boolean
   loadingText?: string
   text: string
   isCancel?: boolean
@@ -19,23 +21,22 @@ type ActionButtonProps = {
 const ActionButton = ({
   onClick,
   disabled,
+  loading,
   loadingText,
   text,
   isCancel = false,
 }: ActionButtonProps) => (
   <button
     onClick={onClick}
-    disabled={disabled}
-    className={`px-4 py-1.5 font-mono text-xs sm:text-sm border transition-all cursor-pointer ${
-      isCancel
-        ? "border-surface2 text-subtext0 hover:bg-surface0 hover:text-text"
-        : "border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed"
-    }`}
+    disabled={disabled || loading}
+    className={`px-4 py-1.5 font-mono text-xs sm:text-sm border transition-all cursor-pointer ${isCancel
+      ? "border-surface2 text-subtext0 hover:bg-surface0 hover:text-text"
+      : "border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed"
+      }`}
   >
-    {disabled && loadingText ? `> ${loadingText}` : `> ${text}`}
+    {loading ? `> ${loadingText}` : `> ${text}`}
   </button>
 )
-
 export default function LinkAccounts() {
   const user = useAuthStore((s) => s.user)
   const fetchUser = useAuthStore((s) => s.fetchUser)
@@ -99,6 +100,7 @@ export default function LinkAccounts() {
 
     try {
       await deleteUser()
+      await logout()
       window.location.href = "/"
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Failed to delete account")
@@ -129,7 +131,7 @@ export default function LinkAccounts() {
           onClick={() =>
             handleVerify("monkeytype", () => verifyMonkeytype(user.mtUrl))
           }
-          disabled={loadingType !== null || !user.mtUrl}
+          disabled={loadingType === "monkeytype" || !user.mtUrl}
           loadingText="verifying..."
           text="verify_monkeytype"
         />
@@ -156,7 +158,7 @@ export default function LinkAccounts() {
         </p>
         <ActionButton
           onClick={handleTypeggVerify}
-          disabled={loadingType !== null}
+          disabled={loadingType === "typegg_verify"}
           loadingText="linking..."
           text="link_typegg"
         />
@@ -213,7 +215,7 @@ export default function LinkAccounts() {
         <div className="block">
           <ActionButton
             onClick={handleSendOtp}
-            disabled={loadingType !== null || !user.collegeEmail}
+            disabled={loadingType === "email_send" || !user.collegeEmail}
             loadingText="sending..."
             text="send_otp"
           />
