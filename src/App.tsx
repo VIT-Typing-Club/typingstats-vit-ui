@@ -1,19 +1,41 @@
-import Navbar from "./components/Navbar"
-import UserRanksCard from "./components/UserRanksCard"
-import DailyCompetitionPage from "./pages/DailyCompetitionPage"
-import MonkeytypeLeaderboardsPage from "./pages/MonkeytypeLeaderboardsPage"
-import Settings from "./pages/SettingsPage"
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Navbar from "@/components/Navbar";
+import SettingsPage from "@/pages/SettingsPage";
+import HomePage from "./pages/HomePage";
+import PublicProfilePage from "./pages/ProfilePage";
 
-function App() {
+function RootLayout() {
   return (
-    <>
+    <div>
       <Navbar />
-      <DailyCompetitionPage />
-      <UserRanksCard />
-      <MonkeytypeLeaderboardsPage />
-      <Settings />
-    </>
-  )
+      <main>
+        <Outlet />
+      </main>
+    </div>
+  );
 }
 
-export default App
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/settings",
+        element: <SettingsPage />,
+      },
+      {
+        path: "/profile/:username",
+        element: <PublicProfilePage />,
+      },
+    ],
+  },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}
