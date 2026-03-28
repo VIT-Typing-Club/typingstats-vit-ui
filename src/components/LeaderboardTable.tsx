@@ -55,7 +55,9 @@ export default function LeaderboardTable({ leaderboard }: Props) {
                       className="h-6 w-6 rounded-full shrink-0"
                     />
                     <span className="truncate">
-                      {entry.displayName ? entry.displayName : entry.discordUsername}
+                      {entry.displayName
+                        ? entry.displayName
+                        : entry.discordUsername}
                     </span>
                   </div>
                 </td>

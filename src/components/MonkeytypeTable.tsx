@@ -59,7 +59,7 @@ export default function MonkeytypeTable({ leaderboard }: Props) {
                     {entry.avatarUrl ? (
                       <img
                         src={entry.avatarUrl}
-                        alt="avatar"
+                        alt={entry.username}
                         className="w-5 h-5 rounded-full ring-1 ring-surface2 shrink-0"
                       />
                     ) : (
