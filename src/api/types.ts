@@ -70,13 +70,13 @@ export type MonkeytypeLeaderboardEntry = {
 }
 
 export type UserUpdateRequest = {
-  displayName?: string
-  collegeEmail?: string
-  mtUrl?: string
-  linkedinUrl?: string
-  githubUrl?: string
-  xUrl?: string
-  instagramUrl?: string
+  displayName?: string | null
+  collegeEmail?: string | null
+  mtUrl?: string | null
+  linkedinUrl?: string | null
+  githubUrl?: string | null
+  xUrl?: string | null
+  instagramUrl?: string | null
 }
 
 export type PublicProfile = {

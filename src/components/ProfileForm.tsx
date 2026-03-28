@@ -118,6 +118,14 @@ export default function ProfileForm() {
     setError(null)
   }
 
+  const sanitize = (data: UserUpdateRequest): UserUpdateRequest => {
+    return Object.fromEntries(Object.entries(data).map(([key, value]) => [
+      key,
+      value === "" ? null : value,
+    ])
+    ) as UserUpdateRequest
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSaving(true)
@@ -125,7 +133,7 @@ export default function ProfileForm() {
     setSuccess(false)
 
     try {
-      await updateProfile(formData)
+      await updateProfile(sanitize(formData))
       await fetchUser()
       setSuccess(true)
     } catch (err: unknown) {
@@ -164,7 +172,7 @@ export default function ProfileForm() {
             num={3}
             label="display_name"
             id="displayName"
-            value={formData.displayName}
+            value={formData.displayName ? formData.displayName : ""}
             onChange={handleChange}
           />
 
@@ -173,7 +181,7 @@ export default function ProfileForm() {
             label="college_email"
             id="collegeEmail"
             type="email"
-            value={formData.collegeEmail}
+            value={formData.collegeEmail ? formData.collegeEmail : ""}
             onChange={handleChange}
             verified={user.collegeVerified}
             showVerified={formData.collegeEmail === user.collegeEmail}
@@ -183,7 +191,7 @@ export default function ProfileForm() {
             num={5}
             label="monkeytype_url"
             id="mtUrl"
-            value={formData.mtUrl}
+            value={formData.mtUrl ? formData.mtUrl : ""}
             onChange={handleChange}
             verified={user.mtVerified}
             showVerified={formData.mtUrl === user.mtUrl}
@@ -197,28 +205,28 @@ export default function ProfileForm() {
             num={9}
             label="linkedin_url"
             id="linkedinUrl"
-            value={formData.linkedinUrl}
+            value={formData.linkedinUrl ? formData.linkedinUrl : ""}
             onChange={handleChange}
           />
           <ConfigLine
             num={10}
             label="github_url"
             id="githubUrl"
-            value={formData.githubUrl}
+            value={formData.githubUrl ? formData.githubUrl : ""}
             onChange={handleChange}
           />
           <ConfigLine
             num={11}
             label="x_url"
             id="xUrl"
-            value={formData.xUrl}
+            value={formData.xUrl ? formData.xUrl : ""}
             onChange={handleChange}
           />
           <ConfigLine
             num={12}
             label="instagram_url"
             id="instagramUrl"
-            value={formData.instagramUrl}
+            value={formData.instagramUrl ? formData.instagramUrl : ""}
             onChange={handleChange}
           />
 
