@@ -3,6 +3,79 @@ import { useAuthStore } from "@/store/authStore";
 import { updateProfile } from "@/api/user";
 import type { UserUpdateRequest } from "@/api/types";
 
+type ConfigLineProps = {
+    num: number;
+    label?: string;
+    id?: keyof UserUpdateRequest;
+    type?: string;
+    value?: string;
+    verified?: boolean;
+    showVerified?: boolean;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    isComment?: boolean;
+    commentText?: string;
+    isEmpty?: boolean;
+};
+
+const ConfigLine = ({
+    num,
+    label,
+    id,
+    type = "text",
+    value,
+    verified,
+    showVerified,
+    onChange,
+    isComment,
+    commentText,
+    isEmpty
+}: ConfigLineProps) => {
+    return (
+        <div className="flex group hover:bg-surface0/40 transition-colors">
+            {/* Line Number Column */}
+            <div className="w-10 sm:w-12 text-right pr-3 sm:pr-4 text-surface2 select-none shrink-0 py-1 border-r border-surface0/50 group-hover:text-overlay0 transition-colors">
+                {num}
+            </div>
+
+            {/* Code Column */}
+            <div className="flex-1 flex items-center py-1 pl-3 sm:pl-4 overflow-hidden">
+                {isEmpty ? (
+                    <span className="h-5"></span> // Spacer for empty lines
+                ) : isComment ? (
+                    <span className="text-overlay0 italic whitespace-nowrap">"{commentText}"</span>
+                ) : (
+                    <>
+                        {/* Syntax Highlighting */}
+                        <span className="text-mauve mr-2 shrink-0">let</span>
+                        <span className="text-sapphire mr-2 shrink-0">g:{label}</span>
+                        <span className="text-text mr-2 shrink-0">=</span>
+                        <span className="text-overlay0 mr-1 shrink-0">"</span>
+
+                        {/* The actual input, stripped of all borders and backgrounds */}
+                        <input
+                            id={id}
+                            name={id}
+                            type={type}
+                            value={value || ""}
+                            onChange={onChange}
+                            className="bg-transparent border-none outline-none text-green focus:ring-0 p-0 w-full min-w-[100px]"
+                            spellCheck="false"
+                            autoComplete="off"
+                        />
+
+                        <span className="text-overlay0 ml-1 shrink-0">"</span>
+
+                        {/* Inline Comments for Verification */}
+                        {showVerified && verified && (
+                            <span className="text-overlay0 italic ml-4 text-xs whitespace-nowrap shrink-0">" ✓ Verified</span>
+                        )}
+                    </>
+                )}
+            </div>
+        </div>
+    );
+};
+
 export default function ProfileForm() {
     const user = useAuthStore((s) => s.user);
     const fetchUser = useAuthStore((s) => s.fetchUser);
@@ -38,6 +111,7 @@ export default function ProfileForm() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         setSuccess(false);
+        setError(null);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -51,63 +125,84 @@ export default function ProfileForm() {
             await fetchUser();
             setSuccess(true);
         } catch (err: unknown) {
-            setError(err instanceof Error ? err.message : "Failed to update profile");
+            setError(err instanceof Error ? err.message : "Failed to write buffer");
         } finally {
             setSaving(false);
         }
     };
 
-    if (!user) return <p>login to view profile</p>;
+    if (!user) return <div className="p-4 font-mono text-subtext0">&gt; ERR: NO_SESSION</div>;
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Edit Profile</h2>
-
-            {error && <div style={{ color: "red" }}>{error}</div>}
-            {success && <div style={{ color: "green" }}>Profile updated successfully!</div>}
-
-            <div>
-                <label htmlFor="displayName">Display Name</label>
-                <input id="displayName" name="displayName" value={formData.displayName} onChange={handleChange} />
+        <div className="flex flex-col h-full bg-crust font-mono text-xs sm:text-sm">
+            {/* Tmux Pane Header */}
+            <div className="bg-mantle border-strong px-3 py-1.5 flex justify-between items-center uppercase tracking-widest text-subtext0 shrink-0">
+                <span>[~/.config/typing-stats/.profilerc]</span>
             </div>
 
-            <div>
-                <label htmlFor="collegeEmail">College Email (@vitstudent.ac.in)</label>
-                <input id="collegeEmail" name="collegeEmail" type="email" value={formData.collegeEmail} onChange={handleChange} />
-                {user.collegeVerified && formData.collegeEmail === user.collegeEmail && (
-                    <small style={{ color: "green", marginLeft: "10px" }}>✓ Verified</small>
-                )}
-            </div>
+            {/* The Text Buffer Area */}
+            <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto custom-scrollbar flex flex-col">
+                <div className="py-2 flex-1">
+                    <ConfigLine num={1} isComment commentText=" User Identity Configuration" />
+                    <ConfigLine num={2} isEmpty />
 
-            <div>
-                <label htmlFor="mtUrl">Monkeytype Profile URL</label>
-                <input id="mtUrl" name="mtUrl" value={formData.mtUrl} onChange={handleChange} />
-                {user.mtVerified && formData.mtUrl === user.mtUrl && (
-                    <small style={{ color: "green", marginLeft: "10px" }}>✓ Verified</small>
-                )}
-            </div>
+                    <ConfigLine num={3} label="display_name" id="displayName" value={formData.displayName} onChange={handleChange} />
 
-            <div>
-                <label htmlFor="linkedinUrl">LinkedIn URL</label>
-                <input id="linkedinUrl" name="linkedinUrl" value={formData.linkedinUrl} onChange={handleChange} />
-            </div>
+                    <ConfigLine
+                        num={4}
+                        label="college_email"
+                        id="collegeEmail"
+                        type="email"
+                        value={formData.collegeEmail}
+                        onChange={handleChange}
+                        verified={user.collegeVerified}
+                        showVerified={formData.collegeEmail === user.collegeEmail}
+                    />
 
-            <div>
-                <label htmlFor="githubUrl">GitHub URL</label>
-                <input id="githubUrl" name="githubUrl" value={formData.githubUrl} onChange={handleChange} />
-            </div>
+                    <ConfigLine
+                        num={5}
+                        label="monkeytype_url"
+                        id="mtUrl"
+                        value={formData.mtUrl}
+                        onChange={handleChange}
+                        verified={user.mtVerified}
+                        showVerified={formData.mtUrl === user.mtUrl}
+                    />
 
-            <div>
-                <label htmlFor="xUrl">X URL</label>
-                <input id="xUrl" name="xUrl" value={formData.xUrl} onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="instagramUrl">Instagram URL</label>
-                <input id="instagramUrl" name="instagramUrl" value={formData.instagramUrl} onChange={handleChange} />
-            </div>
-            <button type="submit" disabled={saving}>
-                {saving ? "Saving..." : "Save Changes"}
-            </button>
-        </form>
+                    <ConfigLine num={6} isEmpty />
+                    <ConfigLine num={7} isComment commentText=" Social Integrations" />
+                    <ConfigLine num={8} isEmpty />
+
+                    <ConfigLine num={9} label="linkedin_url" id="linkedinUrl" value={formData.linkedinUrl} onChange={handleChange} />
+                    <ConfigLine num={10} label="github_url" id="githubUrl" value={formData.githubUrl} onChange={handleChange} />
+                    <ConfigLine num={11} label="x_url" id="xUrl" value={formData.xUrl} onChange={handleChange} />
+                    <ConfigLine num={12} label="instagram_url" id="instagramUrl" value={formData.instagramUrl} onChange={handleChange} />
+
+                    <ConfigLine num={13} isEmpty />
+                    <ConfigLine num={14} isComment commentText=" ~" />
+                    <ConfigLine num={15} isComment commentText=" ~" />
+                </div>
+
+                {/* Vim Command Line / Status Line (Acts as the Submit Button) */}
+                <div className="shrink-0 mt-auto">
+                    {/* Feedback Messages rendered like Vim echomsg */}
+                    {error && <div className="px-4 py-1 text-red bg-red/10 border-t border-red/20 text-xs">E484: {error}</div>}
+                    {success && <div className="px-4 py-1 text-green bg-green/10 border-t border-green/20 text-xs">".profilerc" written</div>}
+
+                    {/* The Command Bar */}
+                    <div className="flex items-center bg-mantle border-t border-strong px-3 py-2 text-text">
+                        <span className="text-overlay0 mr-2 shrink-0">:</span>
+                        <button
+                            type="submit"
+                            disabled={saving}
+                            className="bg-transparent border-none outline-none text-lavender hover:text-mauve transition-colors font-bold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex-1 text-left"
+                        >
+                            {saving ? "w (writing...)" : "w (click or press enter to save)"}
+                        </button>
+                        <span className="text-surface2 text-xs shrink-0 ml-4 hidden sm:block">utf-8[unix]</span>
+                    </div>
+                </div>
+            </form>
+        </div>
     );
 }
