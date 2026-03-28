@@ -1,5 +1,6 @@
 export type User = {
   username: string
+  avatarUrl: string
   displayName: string
   collegeEmail: string
   mtUrl: string
