@@ -33,6 +33,8 @@ export type DailyQuote = {
 export type TypeggLeaderboardEntry = {
   discordId: string
   discordUsername: string
+  displayName: string
+  avatarUrl: string
   typeggUsername: string
   wpm: number
   accuracy: number

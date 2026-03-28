@@ -48,7 +48,16 @@ export default function LeaderboardTable({ leaderboard }: Props) {
 
                 {/* Adjusted max-width for mobile */}
                 <td className="py-1.5 px-2 sm:px-3 text-text truncate max-w-25 sm:max-w-37.5">
-                  {entry.discordUsername}
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={entry.avatarUrl}
+                      alt="avatar"
+                      className="h-6 w-6 rounded-full shrink-0"
+                    />
+                    <span className="truncate">
+                      {entry.displayName ? entry.displayName : entry.discordUsername}
+                    </span>
+                  </div>
                 </td>
 
                 <td className="py-1.5 px-2 sm:px-3 text-right text-lavender font-semibold tabular-nums">
