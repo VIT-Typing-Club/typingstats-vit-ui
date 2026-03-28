@@ -17,11 +17,10 @@ const Tab = ({
   return (
     <Link
       to={path}
-      className={`px-2 sm:px-3 py-0.5 sm:py-1 transition-colors duration-150 whitespace-nowrap ${
-        isActive
-          ? "bg-surface1 text-green font-semibold"
-          : "text-subtext0 hover:text-text hover:bg-surface0"
-      }`}
+      className={`px-2 sm:px-3 py-0.5 sm:py-1 transition-colors duration-150 whitespace-nowrap ${isActive
+        ? "bg-surface1 text-green font-semibold"
+        : "text-subtext0 hover:text-text hover:bg-surface0"
+        }`}
     >
       {index}:{label}
       {isActive ? "*" : "-"}
@@ -100,6 +99,10 @@ export default function Navbar() {
             &lt;login_discord&gt;
           </button>
         )}
+
+        <span className="text-base">
+          {config.VERSION}
+        </span>
       </div>
     </nav>
   )
