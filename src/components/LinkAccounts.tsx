@@ -25,11 +25,10 @@ const ActionButton = ({
   <button
     onClick={onClick}
     disabled={disabled}
-    className={`px-4 py-1.5 font-mono text-xs sm:text-sm border transition-all cursor-pointer ${
-      isCancel
-        ? "border-surface2 text-subtext0 hover:bg-surface0 hover:text-text"
-        : "border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed"
-    }`}
+    className={`px-4 py-1.5 font-mono text-xs sm:text-sm border transition-all cursor-pointer ${isCancel
+      ? "border-surface2 text-subtext0 hover:bg-surface0 hover:text-text"
+      : "border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed"
+      }`}
   >
     {disabled && loadingText ? `> ${loadingText}` : `> ${text}`}
   </button>
@@ -85,6 +84,13 @@ export default function LinkAccounts() {
     )
   }
 
+  const handleTypeggVerify = () => {
+    handleVerify(
+      "typegg_verify",
+      () => verifyTypegg(user.username)
+    )
+  }
+
   const renderMonkeytype = () => {
     if (user.mtVerified)
       return (
@@ -133,7 +139,7 @@ export default function LinkAccounts() {
           scores.
         </p>
         <ActionButton
-          onClick={() => handleVerify("typegg", verifyTypegg)}
+          onClick={handleTypeggVerify}
           disabled={loadingType !== null}
           loadingText="linking..."
           text="link_typegg"
