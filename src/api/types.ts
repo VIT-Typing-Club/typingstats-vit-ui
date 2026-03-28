@@ -7,6 +7,9 @@ export type User = {
   githubUrl: string
   lastTypeggAutoSync: Date
   lastTypeggManualSync: Date
+  collegeVerified: boolean
+  mtVerified: boolean
+  typeggId: string
 }
 
 export type UserRanks = {
@@ -51,4 +54,12 @@ export type MonkeytypeLeaderboardEntry = {
   raw: number;
   testType: TestType
   createdAt: Date
+};
+
+export type UserUpdateRequest = {
+  displayName?: string;
+  collegeEmail?: string;
+  mtUrl?: string;
+  linkedinUrl?: string;
+  githubUrl?: string;
 };
