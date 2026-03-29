@@ -50,6 +50,8 @@ export default function LinkAccounts() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [deleting, setDeleting] = useState(false)
 
+  const [typeggInput, setTypeggInput] = useState("");
+
   if (!user) return null
 
   const handleVerify = async (
@@ -91,8 +93,10 @@ export default function LinkAccounts() {
   }
 
   const handleTypeggVerify = () => {
-    handleVerify("typegg_verify", () => verifyTypegg(user.username))
-  }
+    if (!typeggInput.trim()) return;
+
+    handleVerify("typegg_verify", () => verifyTypegg(typeggInput.trim()));
+  };
 
   const handleDeleteAccount = async () => {
     setDeleting(true)
@@ -123,7 +127,7 @@ export default function LinkAccounts() {
           ⚠ Unverified
         </span>
         <p className="text-subtext0 text-xs font-mono leading-relaxed max-w-md">
-          Ensure your bio contains{" "}
+          Ensure your <a href="https://www.monkeytype.com">bio contains</a>{" "}
           <span className="text-mauve bg-surface0 px-1">[VIT]</span> before
           verifying. You may remove it after.
         </p>
@@ -153,15 +157,35 @@ export default function LinkAccounts() {
           ⚠ Unlinked
         </span>
         <p className="text-subtext0 text-xs font-mono leading-relaxed max-w-md">
-          Your Discord account must be linked to your TypeGG profile to sync
-          scores.
+          Your Monkeytype Account must be linked to your TypeGG profile.
         </p>
-        <ActionButton
-          onClick={handleTypeggVerify}
-          disabled={loadingType === "typegg_verify"}
-          loadingText="linking..."
-          text="link_typegg"
-        />
+
+        <div className="space-y-3 bg-crust p-3 border border-surface1 rounded-sm mt-2 max-w-lg">
+          <span className="text-lavender font-mono text-xs uppercase tracking-wider block">
+            Enter TypeGG Username
+          </span>
+
+          <div className="flex flex-col sm:flex-row gap-2">
+            <input
+              type="text"
+              placeholder="typegg_username"
+              value={typeggInput}
+              onChange={(e) => setTypeggInput(e.target.value)}
+              className="bg-mantle border border-surface2 rounded-sm px-3 py-1.5 text-text font-mono text-sm focus:outline-none focus:border-lavender w-full sm:w-auto flex-1"
+            />
+
+            <div className="flex gap-2 shrink-0">
+              <ActionButton
+                onClick={handleTypeggVerify}
+                disabled={loadingType === "typegg_verify" || !typeggInput.trim()}
+                loadingText="linking..."
+                text="link_typegg"
+              />
+            </div>
+          </div>
+        </div>
+        {/* ----------------------------------------- */}
+
       </div>
     )
   }
@@ -233,21 +257,21 @@ export default function LinkAccounts() {
       <div className="flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-6">
         {error && (
           <div className="mb-6 p-3 bg-red/10 border border-red/30 text-red font-mono text-xs">
-            &gt; ERR: {error}
+            &gt; ERR: {"CHECK INSTRUCTIONS"}
           </div>
         )}
 
         <div className="space-y-6">
           <div className="pb-6 border-b border-subtle">
             <h3 className="font-mono text-sm text-text font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
-              <span className="text-mauve">#</span> Monkeytype Protocol
+              <span className="text-mauve">#</span><a href="https://www.monkeytype.com/account" >Monkeytype Protocol</a>
             </h3>
             {renderMonkeytype()}
           </div>
 
           <div className="pb-6 border-b border-subtle">
             <h3 className="font-mono text-sm text-text font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
-              <span className="text-mauve">#</span> TypeGG Protocol
+              <span className="text-mauve">#</span> <a href="https://typegg.io/" >TypeGG Protocol</a>
             </h3>
             {renderTypegg()}
           </div>
@@ -302,6 +326,6 @@ export default function LinkAccounts() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }

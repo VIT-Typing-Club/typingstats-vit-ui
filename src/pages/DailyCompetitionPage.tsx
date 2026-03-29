@@ -119,7 +119,7 @@ export default function DailyCompetitionPage() {
               </button>
             ) : (
               <p className="text-center text-subtext0 text-xs italic font-mono border border-subtle py-1.5">
-                &gt; authenticate to manual sync
+                &gt; Login to manual sync
               </p>
             )}
           </div>

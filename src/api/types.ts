@@ -91,3 +91,7 @@ export type PublicProfile = {
   xUrl: string | null
   instagramUrl: string | null
 }
+
+export type TypeggVerifyRequest = {
+  typeggUsername: string
+}

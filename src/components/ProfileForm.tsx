@@ -159,9 +159,9 @@ export default function ProfileForm() {
       {/* The Text Buffer Area */}
       <form
         onSubmit={handleSubmit}
-        className="flex-1 overflow-y-auto custom-scrollbar flex flex-col"
+        className="flex-1 custom-scrollbar flex flex-col min-h-0"
       >
-        <div className="py-2 flex-1">
+        <div className="py-2 overflow-y-auto custom-scrollbar flex-1">
           <ConfigLine
             num={1}
             isComment
@@ -190,14 +190,13 @@ export default function ProfileForm() {
 
           <ConfigLine
             num={5}
-            label="monkeytype_url"
+            label="monkeytype_username"
             id="mtUrl"
             value={formData.mtUrl ? formData.mtUrl : ""}
             onChange={handleChange}
             verified={user.mtVerified}
             showVerified={formData.mtUrl === user.mtUrl}
           />
-
           <ConfigLine num={6} isEmpty />
           <ConfigLine num={7} isComment commentText=" Social Integrations" />
           <ConfigLine num={8} isEmpty />
@@ -232,8 +231,64 @@ export default function ProfileForm() {
           />
 
           <ConfigLine num={13} isEmpty />
-          <ConfigLine num={14} isComment commentText=" ~" />
-          <ConfigLine num={15} isComment commentText=" ~" />
+
+          <ConfigLine num={14} isComment commentText=" Daily Competition Verification Guide" />
+          <ConfigLine num={15} isEmpty />
+
+          <ConfigLine
+            num={16}
+            isComment
+            commentText=" Step 1: Link your Monkeytype account (line 5, Monkeytype Protocol)"
+          />
+          <ConfigLine
+            num={17}
+            isComment
+            commentText=" → Add [VIT] to your Monkeytype Bio, and click verify_monkeytype on the right pane"
+          />
+
+          <ConfigLine num={18} isEmpty />
+
+          <ConfigLine
+            num={19}
+            isComment
+            commentText=" Step 2: Connect Monkeytype to TypeGG"
+          />
+          <ConfigLine
+            num={20}
+            isComment
+            commentText=" → Ensure the same Monkeytype account is used for VIT Typing Stats"
+          />
+          <ConfigLine
+            num={21}
+            isComment
+            commentText=" → Link that account to your typegg.io profile"
+          />
+
+          <ConfigLine num={22} isEmpty />
+
+          <ConfigLine
+            num={23}
+            isComment
+            commentText=" Step 3: Verify TypeGG"
+          />
+          <ConfigLine
+            num={24}
+            isComment
+            commentText=" → Enter your TypeGG username in the right pane under the TypeGG protocol"
+          />
+          <ConfigLine
+            num={25}
+            isComment
+            commentText=" → Click 'link_typegg' on the to complete setup"
+          />
+
+          <ConfigLine num={26} isEmpty />
+
+          <ConfigLine
+            num={27}
+            isComment
+            commentText=" ✔ Once verified, you can participate in the daily leaderboard"
+          />
         </div>
 
         {/* Vim Command Line / Status Line (Acts as the Submit Button) */}
