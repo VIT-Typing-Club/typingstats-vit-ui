@@ -15,4 +15,5 @@ pnpm run dev
 ```
 
 ### License
+
 MIT License © VIT Typing Club

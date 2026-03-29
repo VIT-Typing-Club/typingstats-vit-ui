@@ -29,10 +29,11 @@ const ActionButton = ({
   <button
     onClick={onClick}
     disabled={disabled || loading}
-    className={`px-4 py-1.5 font-mono text-xs sm:text-sm border transition-all cursor-pointer ${isCancel
-      ? "border-surface2 text-subtext0 hover:bg-surface0 hover:text-text"
-      : "border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed"
-      }`}
+    className={`px-4 py-1.5 font-mono text-xs sm:text-sm border transition-all cursor-pointer ${
+      isCancel
+        ? "border-surface2 text-subtext0 hover:bg-surface0 hover:text-text"
+        : "border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed"
+    }`}
   >
     {loading ? `> ${loadingText}` : `> ${text}`}
   </button>
@@ -50,7 +51,7 @@ export default function LinkAccounts() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [deleting, setDeleting] = useState(false)
 
-  const [typeggInput, setTypeggInput] = useState("");
+  const [typeggInput, setTypeggInput] = useState("")
 
   if (!user) return null
 
@@ -93,10 +94,10 @@ export default function LinkAccounts() {
   }
 
   const handleTypeggVerify = () => {
-    if (!typeggInput.trim()) return;
+    if (!typeggInput.trim()) return
 
-    handleVerify("typegg_verify", () => verifyTypegg(typeggInput.trim()));
-  };
+    handleVerify("typegg_verify", () => verifyTypegg(typeggInput.trim()))
+  }
 
   const handleDeleteAccount = async () => {
     setDeleting(true)
@@ -177,7 +178,9 @@ export default function LinkAccounts() {
             <div className="flex gap-2 shrink-0">
               <ActionButton
                 onClick={handleTypeggVerify}
-                disabled={loadingType === "typegg_verify" || !typeggInput.trim()}
+                disabled={
+                  loadingType === "typegg_verify" || !typeggInput.trim()
+                }
                 loadingText="linking..."
                 text="link_typegg"
               />
@@ -185,7 +188,6 @@ export default function LinkAccounts() {
           </div>
         </div>
         {/* ----------------------------------------- */}
-
       </div>
     )
   }
@@ -264,14 +266,18 @@ export default function LinkAccounts() {
         <div className="space-y-6">
           <div className="pb-6 border-b border-subtle">
             <h3 className="font-mono text-sm text-text font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
-              <span className="text-mauve">#</span><a href="https://www.monkeytype.com/account" >Monkeytype Protocol</a>
+              <span className="text-mauve">#</span>
+              <a href="https://www.monkeytype.com/account">
+                Monkeytype Protocol
+              </a>
             </h3>
             {renderMonkeytype()}
           </div>
 
           <div className="pb-6 border-b border-subtle">
             <h3 className="font-mono text-sm text-text font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
-              <span className="text-mauve">#</span> <a href="https://typegg.io/" >TypeGG Protocol</a>
+              <span className="text-mauve">#</span>{" "}
+              <a href="https://typegg.io/">TypeGG Protocol</a>
             </h3>
             {renderTypegg()}
           </div>
@@ -326,6 +332,6 @@ export default function LinkAccounts() {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }

@@ -232,7 +232,11 @@ export default function ProfileForm() {
 
           <ConfigLine num={13} isEmpty />
 
-          <ConfigLine num={14} isComment commentText=" Daily Competition Verification Guide" />
+          <ConfigLine
+            num={14}
+            isComment
+            commentText=" Daily Competition Verification Guide"
+          />
           <ConfigLine num={15} isEmpty />
 
           <ConfigLine
@@ -266,11 +270,7 @@ export default function ProfileForm() {
 
           <ConfigLine num={22} isEmpty />
 
-          <ConfigLine
-            num={23}
-            isComment
-            commentText=" Step 3: Verify TypeGG"
-          />
+          <ConfigLine num={23} isComment commentText=" Step 3: Verify TypeGG" />
           <ConfigLine
             num={24}
             isComment
