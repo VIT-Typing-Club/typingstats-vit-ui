@@ -13,10 +13,10 @@ export const verifyMonkeytype = (username: string) =>
     body: JSON.stringify({ username }),
   })
 
-export const verifyTypegg = (username: string) =>
+export const verifyTypegg = (typeggUsername: string) =>
   apiClient<{ message: string }>("/api/verify/typegg", {
     method: "POST",
-    body: JSON.stringify({ username }),
+    body: JSON.stringify({ typeggUsername }),
   })
 
 export const sendCollegeOtp = (email: string) =>
