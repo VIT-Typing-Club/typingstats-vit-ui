@@ -1,5 +1,6 @@
-// Catppuccin Macchiato design tokens
 /** @type {import('tailwindcss').Config} */
+
+const withOpacity = (cssVariable) => `rgb(var(${cssVariable}) / <alpha-value>)`
 
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
@@ -7,41 +8,47 @@ export default {
     extend: {
       colors: {
         // ── Base surfaces ──────────────────────────────────────────────
-        base: "#1e2030", // page background
-        mantle: "#181926", // navbar, card backgrounds
-        crust: "#0f1016", // deepest surface / borders on dark panels
+        base: withOpacity("--color-base"),
+        mantle: withOpacity("--color-mantle"),
+        crust: withOpacity("--color-crust"),
 
-        // ── Surface layers (elevation) ─────────────────────────────────
-        surface0: "#1e2030",
-        surface1: "#252840",
-        surface2: "#2e3252",
+        // ── Surface layers (elevation) ─────────────────────────────────────────────
+        surface0: withOpacity("--color-surface0"),
+        surface1: withOpacity("--color-surface1"),
+        surface2: withOpacity("--color-surface2"),
+        overlay0: withOpacity("--color-overlay0"),
 
         // ── Overlays (borders, dividers) ───────────────────────────────
-        overlay0: "#6e738d",
-        overlay1: "#8087a2",
-        overlay2: "#939ab7",
+        overlay1: withOpacity("--color-overlay1"),
+        overlay2: withOpacity("--color-overlay2"),
 
         // ── Text ───────────────────────────────────────────────────────
-        text: "#cad3f5", // primary
-        subtext1: "#b8c0e0", // secondary / labels
-        subtext0: "#a5adcb", // muted / placeholders
+        text: withOpacity("--color-text"),
+        subtext1: withOpacity("--color-subtext1"),
+        subtext0: withOpacity("--color-subtext0"),
 
         // ── Accents ────────────────────────────────────────────────────
-        lavender: "#b7bdf8", // primary interactive / focus rings
-        mauve: "#c6a0f6", // rank badges / highlights
-        blue: "#8aadf4", // links
-        sapphire: "#7dc4e4", // info states
-        sky: "#91d7e3", // secondary info
-        teal: "#8bd5ca", // accents / tags
+        lavender: withOpacity("--color-lavender"),
+        mauve: withOpacity("--color-mauve"),
+        blue: withOpacity("--color-blue"),
+        sapphire: withOpacity("--color-sapphire"),
+        sky: withOpacity("--color-sky"),
+        teal: withOpacity("--color-teal"),
 
         // ── Semantic ──────────────────────────────────────────────────
-        green: "#a6da95", // success / WPM gains / verified
-        yellow: "#eed49f", // warning / caution
-        peach: "#f5a97f", // mid-tier / notice
-        red: "#ed8796", // errors / declines
-        maroon: "#ee99a0", // soft error variant
-        flamingo: "#f0c6c6", // very soft
-        rosewater: "#f4dbd6", // lightest accent
+        green: withOpacity("--color-green"),
+        yellow: withOpacity("--color-yellow"),
+        peach: withOpacity("--color-peach"),
+        red: withOpacity("--color-red"),
+        maroon: withOpacity("--color-maroon"),
+        flamingo: withOpacity("--color-flamingo"),
+        rosewater: withOpacity("--color-rosewater"),
+
+        // ── Border Colours ──────────────────────────────────────────────────
+        default: withOpacity("--border-default"),
+        subtle: withOpacity("--border-subtle"),
+        strong: withOpacity("--border-strong"),
+        accent: withOpacity("--border-accent"),
       },
 
       fontFamily: {
@@ -63,18 +70,10 @@ export default {
         "3xl": ["1.5rem", { lineHeight: "2rem" }],
       },
 
-      borderColor: {
-        // Much darker, true terminal-divider color
-        DEFAULT: "#363a4f", // Catppuccin Surface1
-        subtle: "#24273a", // Catppuccin Surface0
-        strong: "#494d64", // Catppuccin Surface2
-        accent: "#b7bdf8", // Lavender
-      },
-
       boxShadow: {
-        card: "0 1px 3px 0 rgba(0,0,0,0.4), 0 0 0 1px rgba(110,115,141,0.15)",
-        glow: "0 0 0 2px rgba(183,189,248,0.35)",
-        "glow-green": "0 0 0 2px rgba(166,218,149,0.35)",
+        card: "var(--shadow-card)",
+        glow: "var(--shadow-glow)",
+        "glow-green": "var(--shadow-glowGreen)",
       },
 
       keyframes: {

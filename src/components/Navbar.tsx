@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom"
 import { useAuthStore } from "@/store/authStore"
 import { config } from "@/config"
+import { ThemeSelector } from "@/components/ThemeSelector"
 
 const Tab = ({
   path,
@@ -66,6 +67,10 @@ export default function Navbar() {
 
       {/* Right Section */}
       <div className="flex items-center space-x-3 sm:space-x-4 text-subtext0 shrink-0 ml-4">
+        <ThemeSelector />
+
+        <span className="text-overlay0">|</span>
+
         {user ? (
           <div className="flex items-center space-x-2">
             <Link
