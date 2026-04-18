@@ -1,9 +1,6 @@
 import { useMemo, useLayoutEffect, useState, type ReactNode } from "react"
 import { defaultTheme, themes } from "@/theme/themeRegistry"
-import {
-  ThemeContext,
-  type ThemeContextValue,
-} from "@/theme/themeContext"
+import { ThemeContext, type ThemeContextValue } from "@/theme/themeContext"
 import {
   themeBorderTokens,
   themeColorTokens,
@@ -89,9 +86,8 @@ function resolveInitialTheme(): ThemeDefinition {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [activeTheme, setActiveTheme] = useState<ThemeDefinition>(
-    resolveInitialTheme,
-  )
+  const [activeTheme, setActiveTheme] =
+    useState<ThemeDefinition>(resolveInitialTheme)
 
   const themeMap = useMemo(
     () => new Map(themes.map((theme) => [theme.id, theme])),
@@ -114,17 +110,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setTheme: (themeId) => {
       const nextTheme = themeMap.get(themeId) ?? defaultTheme
 
-      setActiveTheme((prev) =>
-        prev.id === nextTheme.id ? prev : nextTheme
-      )
+      setActiveTheme((prev) => (prev.id === nextTheme.id ? prev : nextTheme))
     },
   }
 
-  return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
-  )
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
 
 export { ThemeContext }

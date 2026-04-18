@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const sithTheme: ThemeDefinition = {
   id: "sith",
   name: "Sith",
-  description: "The dark side. Obsidian black, blood red, and corrupted lightning. Power at any cost.",
+  description:
+    "The dark side. Obsidian black, blood red, and corrupted lightning. Power at any cost.",
   colors: {
     base: "#080008",
     mantle: "#0e000e",
@@ -43,6 +44,6 @@ const sithTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(204,0,255,0.40), 0 0 24px rgba(136,0,204,0.28)",
   },
   selection: "#330000",
-};
+}
 
-export default sithTheme;
+export default sithTheme

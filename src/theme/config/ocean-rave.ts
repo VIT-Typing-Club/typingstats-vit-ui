@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const oceanRaveTheme: ThemeDefinition = {
   id: "ocean-rave",
   name: "Ocean Rave",
-  description: "Deep sea blue base pumped with electric aquas and bioluminescent greens.",
+  description:
+    "Deep sea blue base pumped with electric aquas and bioluminescent greens.",
   colors: {
     base: "#000d1a",
     mantle: "#001122",
@@ -43,6 +44,6 @@ const oceanRaveTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(0,255,136,0.32), 0 0 20px rgba(170,255,0,0.16)",
   },
   selection: "#003358",
-};
+}
 
-export default oceanRaveTheme;
+export default oceanRaveTheme

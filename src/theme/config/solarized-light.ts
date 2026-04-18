@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const solarizedLightTheme: ThemeDefinition = {
   id: "solarized-light",
   name: "Solarized Light",
-  description: "The classic warm-cream Solarized palette. Timeless and easy on the eyes.",
+  description:
+    "The classic warm-cream Solarized palette. Timeless and easy on the eyes.",
   colors: {
     base: "#fdf6e3",
     mantle: "#eee8d5",
@@ -40,9 +41,10 @@ const solarizedLightTheme: ThemeDefinition = {
   shadows: {
     card: "0 4px 20px rgba(7,54,66,0.10), 0 0 0 1px rgba(7,54,66,0.06)",
     glow: "0 0 0 2px rgba(38,139,210,0.20), 0 4px 16px rgba(38,139,210,0.10)",
-    glowGreen: "0 0 0 2px rgba(133,153,0,0.20), 0 4px 12px rgba(42,161,152,0.12)",
+    glowGreen:
+      "0 0 0 2px rgba(133,153,0,0.20), 0 4px 12px rgba(42,161,152,0.12)",
   },
   selection: "#d9e8f5",
-};
+}
 
-export default solarizedLightTheme;
+export default solarizedLightTheme

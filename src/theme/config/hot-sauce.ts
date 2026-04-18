@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const hotSauceTheme: ThemeDefinition = {
   id: "hot-sauce",
   name: "Hot Sauce",
-  description: "Fiery reds and volcanic oranges on a scorched dark base. Absolutely brutal.",
+  description:
+    "Fiery reds and volcanic oranges on a scorched dark base. Absolutely brutal.",
   colors: {
     base: "#1a0400",
     mantle: "#220500",
@@ -43,6 +44,6 @@ const hotSauceTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(221,204,0,0.32), 0 0 18px rgba(255,136,0,0.18)",
   },
   selection: "#660a00",
-};
+}
 
-export default hotSauceTheme;
+export default hotSauceTheme

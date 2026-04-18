@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const paperTheme: ThemeDefinition = {
   id: "paper",
   name: "Paper",
-  description: "Off-white parchment with sepia ink. Feels like reading a physical book.",
+  description:
+    "Off-white parchment with sepia ink. Feels like reading a physical book.",
   colors: {
     base: "#f5f0e8",
     mantle: "#ede6d8",
@@ -43,6 +44,6 @@ const paperTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(68,85,51,0.16), 0 4px 12px rgba(68,102,85,0.10)",
   },
   selection: "#ddd0b8",
-};
+}
 
-export default paperTheme;
+export default paperTheme

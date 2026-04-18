@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const boldRedTheme: ThemeDefinition = {
   id: "bold-red",
   name: "Bold Red",
-  description: "Maximum red energy. No compromises, no pastels. Just pure saturated aggression.",
+  description:
+    "Maximum red energy. No compromises, no pastels. Just pure saturated aggression.",
   colors: {
     base: "#cc0000",
     mantle: "#bb0000",
@@ -43,6 +44,6 @@ const boldRedTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(68,255,102,0.35), 0 0 20px rgba(0,221,204,0.20)",
   },
   selection: "#770000",
-};
+}
 
-export default boldRedTheme;
+export default boldRedTheme

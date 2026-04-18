@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const synthwaveTheme: ThemeDefinition = {
   id: "synthwave",
   name: "Synthwave",
-  description: "80s retrowave palette. Hot pink grids, electric purple skies, chrome type.",
+  description:
+    "80s retrowave palette. Hot pink grids, electric purple skies, chrome type.",
   colors: {
     base: "#0d0221",
     mantle: "#120330",
@@ -43,6 +44,6 @@ const synthwaveTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(68,255,136,0.30), 0 0 20px rgba(0,255,221,0.18)",
   },
   selection: "#2c0868",
-};
+}
 
-export default synthwaveTheme;
+export default synthwaveTheme

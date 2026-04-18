@@ -10,7 +10,8 @@ export function ThemeSelector() {
   useEffect(() => {
     if (!showThemeMenu) return
     const handler = (e: KeyboardEvent | MouseEvent) => {
-      if (e instanceof KeyboardEvent && e.key === "Escape") setShowThemeMenu(false)
+      if (e instanceof KeyboardEvent && e.key === "Escape")
+        setShowThemeMenu(false)
     }
     document.addEventListener("keydown", handler)
     document.addEventListener("mousedown", handler)
@@ -48,7 +49,9 @@ export function ThemeSelector() {
           <circle cx="14.75" cy="7.75" r="1.1" fill="currentColor" />
           <circle cx="16.75" cy="11.5" r="1.1" fill="currentColor" />
         </svg>
-        <span className="hidden md:inline text-xs sm:text-sm">{activeTheme.name}</span>
+        <span className="hidden md:inline text-xs sm:text-sm">
+          {activeTheme.name}
+        </span>
       </button>
 
       {showThemeMenu && (
@@ -64,7 +67,10 @@ export function ThemeSelector() {
             {themes.map((theme) => (
               <button
                 key={theme.id}
-                onClick={() => { setTheme(theme.id); setShowThemeMenu(false) }}
+                onClick={() => {
+                  setTheme(theme.id)
+                  setShowThemeMenu(false)
+                }}
                 className={`px-3 py-0.5 text-left text-xs sm:text-sm transition-colors ${
                   theme.id === activeTheme.id
                     ? "text-lavender bg-surface1"

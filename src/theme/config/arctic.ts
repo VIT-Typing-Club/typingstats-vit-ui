@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const arcticTheme: ThemeDefinition = {
   id: "arctic",
   name: "Arctic",
-  description: "Ice blue and snow white. Crisp, clinical, and breathtakingly cold.",
+  description:
+    "Ice blue and snow white. Crisp, clinical, and breathtakingly cold.",
   colors: {
     base: "#f0f5fa",
     mantle: "#e4edf5",
@@ -40,9 +41,10 @@ const arcticTheme: ThemeDefinition = {
   shadows: {
     card: "0 4px 24px rgba(13,31,45,0.08), 0 0 0 1px rgba(17,102,204,0.08)",
     glow: "0 0 0 2px rgba(17,102,204,0.20), 0 6px 20px rgba(51,153,204,0.14)",
-    glowGreen: "0 0 0 2px rgba(34,119,68,0.18), 0 4px 14px rgba(0,136,153,0.12)",
+    glowGreen:
+      "0 0 0 2px rgba(34,119,68,0.18), 0 4px 14px rgba(0,136,153,0.12)",
   },
   selection: "#ccddf5",
-};
+}
 
-export default arcticTheme;
+export default arcticTheme

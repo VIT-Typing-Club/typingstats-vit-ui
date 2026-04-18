@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const candyLandTheme: ThemeDefinition = {
   id: "candy-land",
   name: "Candy Land",
-  description: "Bubblegum pinks, lollipop reds, candy blues. Pure sugar-rush energy.",
+  description:
+    "Bubblegum pinks, lollipop reds, candy blues. Pure sugar-rush energy.",
   colors: {
     base: "#ff85c8",
     mantle: "#ff6dbf",
@@ -43,6 +44,6 @@ const candyLandTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(0,238,85,0.35), 0 0 18px rgba(0,221,204,0.20)",
   },
   selection: "#ff44aa",
-};
+}
 
-export default candyLandTheme;
+export default candyLandTheme

@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const forestTerminalTheme: ThemeDefinition = {
   id: "forest-terminal",
   name: "Forest Terminal",
-  description: "Deep forest green base with moss and bark tones. Organic and focused.",
+  description:
+    "Deep forest green base with moss and bark tones. Organic and focused.",
   colors: {
     base: "#0b110d",
     mantle: "#111a13",
@@ -43,6 +44,6 @@ const forestTerminalTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(93,204,93,0.3), 0 0 18px rgba(93,204,93,0.18)",
   },
   selection: "#1e3320",
-};
+}
 
-export default forestTerminalTheme;
+export default forestTerminalTheme

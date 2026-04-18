@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const babyPinkTheme: ThemeDefinition = {
   id: "baby-pink",
   name: "Baby Pink",
-  description: "Soft blush pinks with gold and lilac. Delicate but never boring.",
+  description:
+    "Soft blush pinks with gold and lilac. Delicate but never boring.",
   colors: {
     base: "#fce4ec",
     mantle: "#f8d7e6",
@@ -40,9 +41,10 @@ const babyPinkTheme: ThemeDefinition = {
   shadows: {
     card: "0 8px 32px rgba(61,0,34,0.14), 0 0 0 1px rgba(255,68,102,0.14)",
     glow: "0 0 0 2px rgba(255,68,102,0.25), 0 0 20px rgba(221,68,204,0.16)",
-    glowGreen: "0 0 0 2px rgba(102,204,119,0.25), 0 0 14px rgba(68,204,187,0.14)",
+    glowGreen:
+      "0 0 0 2px rgba(102,204,119,0.25), 0 0 14px rgba(68,204,187,0.14)",
   },
   selection: "#f9c0d8",
-};
+}
 
-export default babyPinkTheme;
+export default babyPinkTheme
