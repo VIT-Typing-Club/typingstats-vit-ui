@@ -86,7 +86,7 @@ export default function Navbar() {
               ) : (
                 <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-surface2 ring-1 ring-surface1 shrink-0" />
               )}
-              <span className="truncate">
+              <span className="truncate hidden sm:inline-block">
                 @{user.displayName || user.username}
               </span>
             </Link>
@@ -118,7 +118,7 @@ export default function Navbar() {
 
         <span className="text-overlay0">|</span>
 
-        <div className="flex items-center space-x-2">
+        <div className="hidden sm:flex items-center space-x-2">
           <a
             href="https://github.com/vit-typing-club"
             target="_blank"
