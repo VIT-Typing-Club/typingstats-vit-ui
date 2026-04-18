@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const electricLemonTheme: ThemeDefinition = {
   id: "electric-lemon",
   name: "Electric Lemon",
-  description: "Screaming acid yellow base with electric contrasts. Bold as it gets.",
+  description:
+    "Screaming acid yellow base with electric contrasts. Bold as it gets.",
   colors: {
     base: "#e8ff00",
     mantle: "#d4ee00",
@@ -43,6 +44,6 @@ const electricLemonTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(0,170,0,0.30), 0 0 18px rgba(0,204,136,0.18)",
   },
   selection: "#bbcc00",
-};
+}
 
-export default electricLemonTheme;
+export default electricLemonTheme

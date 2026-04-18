@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const highContrastTheme: ThemeDefinition = {
   id: "high-contrast",
   name: "High Contrast",
-  description: "Maximum legibility. Pure black and white with saturated WCAG-passing accents.",
+  description:
+    "Maximum legibility. Pure black and white with saturated WCAG-passing accents.",
   colors: {
     base: "#000000",
     mantle: "#0a0a0a",
@@ -43,6 +44,6 @@ const highContrastTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px #55ff55, 0 0 16px rgba(85,255,85,0.30)",
   },
   selection: "#333333",
-};
+}
 
-export default highContrastTheme;
+export default highContrastTheme

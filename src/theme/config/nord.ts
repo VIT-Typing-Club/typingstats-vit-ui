@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const nordTheme: ThemeDefinition = {
   id: "nord",
   name: "Nord",
-  description: "Arctic fjords and polar nights. Muted blue-grey with icy accents.",
+  description:
+    "Arctic fjords and polar nights. Muted blue-grey with icy accents.",
   colors: {
     base: "#2e3440",
     mantle: "#272c38",
@@ -40,9 +41,10 @@ const nordTheme: ThemeDefinition = {
   shadows: {
     card: "0 10px 36px rgba(34,39,48,0.65), 0 0 0 1px rgba(136,192,208,0.10)",
     glow: "0 0 0 2px rgba(136,192,208,0.26), 0 0 20px rgba(129,161,193,0.14)",
-    glowGreen: "0 0 0 2px rgba(163,190,140,0.24), 0 0 16px rgba(143,188,187,0.12)",
+    glowGreen:
+      "0 0 0 2px rgba(163,190,140,0.24), 0 0 16px rgba(143,188,187,0.12)",
   },
   selection: "#434c5e",
-};
+}
 
-export default nordTheme;
+export default nordTheme

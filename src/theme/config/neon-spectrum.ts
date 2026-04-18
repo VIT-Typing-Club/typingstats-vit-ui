@@ -41,7 +41,8 @@ const neonSpectrumTheme: ThemeDefinition = {
   shadows: {
     card: "0 18px 48px rgba(5, 3, 10, 0.62), 0 0 0 1px rgba(168, 85, 247, 0.16)",
     glow: "0 0 0 2px rgba(255, 79, 216, 0.34), 0 0 24px rgba(54, 209, 255, 0.18)",
-    glowGreen: "0 0 0 2px rgba(125, 255, 122, 0.3), 0 0 18px rgba(56, 255, 214, 0.16)",
+    glowGreen:
+      "0 0 0 2px rgba(125, 255, 122, 0.3), 0 0 18px rgba(56, 255, 214, 0.16)",
   },
   selection: "#32205d",
 }

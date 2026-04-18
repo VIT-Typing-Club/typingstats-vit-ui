@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const mochaLatteTheme: ThemeDefinition = {
   id: "mocha-latte",
   name: "Mocha Latte",
-  description: "Warm espresso browns and cream. Comfortable, rich, coffeehouse aesthetic.",
+  description:
+    "Warm espresso browns and cream. Comfortable, rich, coffeehouse aesthetic.",
   colors: {
     base: "#1a1108",
     mantle: "#221608",
@@ -40,9 +41,10 @@ const mochaLatteTheme: ThemeDefinition = {
   shadows: {
     card: "0 12px 40px rgba(18,12,4,0.62), 0 0 0 1px rgba(204,119,51,0.10)",
     glow: "0 0 0 2px rgba(204,119,51,0.30), 0 0 22px rgba(187,102,170,0.14)",
-    glowGreen: "0 0 0 2px rgba(119,170,85,0.26), 0 0 16px rgba(68,153,136,0.12)",
+    glowGreen:
+      "0 0 0 2px rgba(119,170,85,0.26), 0 0 16px rgba(68,153,136,0.12)",
   },
   selection: "#3a2410",
-};
+}
 
-export default mochaLatteTheme;
+export default mochaLatteTheme

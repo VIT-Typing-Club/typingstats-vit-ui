@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const strawberryMilkTheme: ThemeDefinition = {
   id: "strawberry-milk",
   name: "Strawberry Milk",
-  description: "Warm blush whites and deep strawberry reds. Rich, creamy, sweet.",
+  description:
+    "Warm blush whites and deep strawberry reds. Rich, creamy, sweet.",
   colors: {
     base: "#fff0f3",
     mantle: "#ffe4e9",
@@ -43,6 +44,6 @@ const strawberryMilkTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(51,187,85,0.24), 0 0 14px rgba(34,187,170,0.14)",
   },
   selection: "#ffccd4",
-};
+}
 
-export default strawberryMilkTheme;
+export default strawberryMilkTheme

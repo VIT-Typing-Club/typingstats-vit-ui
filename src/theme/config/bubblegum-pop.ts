@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const bubblegumPopTheme: ThemeDefinition = {
   id: "bubblegum-pop",
   name: "Bubblegum Pop",
-  description: "Bright mint green base with hot pink and electric yellow pops. Y2K energy.",
+  description:
+    "Bright mint green base with hot pink and electric yellow pops. Y2K energy.",
   colors: {
     base: "#00cc88",
     mantle: "#00bb77",
@@ -43,6 +44,6 @@ const bubblegumPopTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(170,255,0,0.35), 0 0 18px rgba(0,255,238,0.20)",
   },
   selection: "#008844",
-};
+}
 
-export default bubblegumPopTheme;
+export default bubblegumPopTheme

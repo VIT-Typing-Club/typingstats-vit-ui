@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const cottonCandyTheme: ThemeDefinition = {
   id: "cotton-candy",
   name: "Cotton Candy",
-  description: "Pastel pink and mint blue swirled together. Sweet, airy, and fun.",
+  description:
+    "Pastel pink and mint blue swirled together. Sweet, airy, and fun.",
   colors: {
     base: "#f5e6ff",
     mantle: "#ebd6ff",
@@ -40,9 +41,10 @@ const cottonCandyTheme: ThemeDefinition = {
   shadows: {
     card: "0 10px 36px rgba(34,0,68,0.18), 0 0 0 1px rgba(255,68,238,0.16)",
     glow: "0 0 0 2px rgba(255,68,238,0.30), 0 0 22px rgba(170,68,255,0.18)",
-    glowGreen: "0 0 0 2px rgba(136,255,170,0.30), 0 0 16px rgba(68,255,221,0.18)",
+    glowGreen:
+      "0 0 0 2px rgba(136,255,170,0.30), 0 0 16px rgba(68,255,221,0.18)",
   },
   selection: "#ddaaff",
-};
+}
 
-export default cottonCandyTheme;
+export default cottonCandyTheme

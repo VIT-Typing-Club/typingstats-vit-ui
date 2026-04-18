@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const minimalistDarkTheme: ThemeDefinition = {
   id: "minimalist-dark",
   name: "Minimalist Dark",
-  description: "Pure obsidian base, subtle grey hierarchy, single cool-white accent.",
+  description:
+    "Pure obsidian base, subtle grey hierarchy, single cool-white accent.",
   colors: {
     base: "#0e0e0e",
     mantle: "#161616",
@@ -40,9 +41,10 @@ const minimalistDarkTheme: ThemeDefinition = {
   shadows: {
     card: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)",
     glow: "0 0 0 2px rgba(85,153,255,0.25), 0 0 20px rgba(85,153,255,0.12)",
-    glowGreen: "0 0 0 2px rgba(85,204,102,0.22), 0 0 16px rgba(51,204,170,0.12)",
+    glowGreen:
+      "0 0 0 2px rgba(85,204,102,0.22), 0 0 16px rgba(51,204,170,0.12)",
   },
   selection: "#2a2a3a",
-};
+}
 
-export default minimalistDarkTheme;
+export default minimalistDarkTheme
