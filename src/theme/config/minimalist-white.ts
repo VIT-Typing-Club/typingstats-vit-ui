@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const minimalistWhiteTheme: ThemeDefinition = {
   id: "minimalist-white",
   name: "Minimalist White",
-  description: "Clean, airy, and editorial. Pure whites with ink-black type and a single accent.",
+  description:
+    "Clean, airy, and editorial. Pure whites with ink-black type and a single accent.",
   colors: {
     base: "#ffffff",
     mantle: "#f7f7f7",
@@ -40,9 +41,10 @@ const minimalistWhiteTheme: ThemeDefinition = {
   shadows: {
     card: "0 2px 12px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.05)",
     glow: "0 0 0 2px rgba(26,110,245,0.18), 0 4px 16px rgba(26,110,245,0.10)",
-    glowGreen: "0 0 0 2px rgba(42,138,62,0.18), 0 4px 12px rgba(42,138,62,0.10)",
+    glowGreen:
+      "0 0 0 2px rgba(42,138,62,0.18), 0 4px 12px rgba(42,138,62,0.10)",
   },
   selection: "#e0e8ff",
-};
+}
 
-export default minimalistWhiteTheme;
+export default minimalistWhiteTheme

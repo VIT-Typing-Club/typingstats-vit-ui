@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const jediTheme: ThemeDefinition = {
   id: "jedi",
   name: "Jedi",
-  description: "The light side. Temple stone, pure blue kyber, and the calm glow of the Force.",
+  description:
+    "The light side. Temple stone, pure blue kyber, and the calm glow of the Force.",
   colors: {
     base: "#0a0e1a",
     mantle: "#0e1422",
@@ -43,6 +44,6 @@ const jediTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(68,221,136,0.38), 0 0 22px rgba(0,221,204,0.22)",
   },
   selection: "#1a2e55",
-};
+}
 
-export default jediTheme;
+export default jediTheme

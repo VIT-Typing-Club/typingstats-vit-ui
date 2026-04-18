@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const rosePineTheme: ThemeDefinition = {
   id: "rose-pine",
   name: "Rosé Pine",
-  description: "Warm dusty rose base with muted jewel tones. Cozy and literary.",
+  description:
+    "Warm dusty rose base with muted jewel tones. Cozy and literary.",
   colors: {
     base: "#191724",
     mantle: "#1f1d2e",
@@ -40,9 +41,10 @@ const rosePineTheme: ThemeDefinition = {
   shadows: {
     card: "0 12px 36px rgba(17,16,25,0.55), 0 0 0 1px rgba(196,167,231,0.08)",
     glow: "0 0 0 2px rgba(235,111,146,0.28), 0 0 20px rgba(156,207,216,0.14)",
-    glowGreen: "0 0 0 2px rgba(154,216,135,0.25), 0 0 16px rgba(49,116,143,0.14)",
+    glowGreen:
+      "0 0 0 2px rgba(154,216,135,0.25), 0 0 16px rgba(49,116,143,0.14)",
   },
   selection: "#312e4a",
-};
+}
 
-export default rosePineTheme;
+export default rosePineTheme

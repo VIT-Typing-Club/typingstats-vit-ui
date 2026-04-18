@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const vaporwaveTheme: ThemeDefinition = {
   id: "vaporwave",
   name: "Vaporwave",
-  description: "Lilac and teal in pastel neon. Glitchy, dreamy, Windows 95 in a mall.",
+  description:
+    "Lilac and teal in pastel neon. Glitchy, dreamy, Windows 95 in a mall.",
   colors: {
     base: "#1e0533",
     mantle: "#280644",
@@ -40,9 +41,10 @@ const vaporwaveTheme: ThemeDefinition = {
   shadows: {
     card: "0 14px 48px rgba(20,3,34,0.68), 0 0 0 2px rgba(255,68,255,0.18)",
     glow: "0 0 0 2px rgba(255,68,255,0.35), 0 0 26px rgba(68,255,238,0.20)",
-    glowGreen: "0 0 0 2px rgba(136,255,153,0.28), 0 0 18px rgba(0,255,204,0.18)",
+    glowGreen:
+      "0 0 0 2px rgba(136,255,153,0.28), 0 0 18px rgba(0,255,204,0.18)",
   },
   selection: "#551188",
-};
+}
 
-export default vaporwaveTheme;
+export default vaporwaveTheme

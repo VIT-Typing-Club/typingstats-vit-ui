@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const sunsetTheme: ThemeDefinition = {
   id: "sunset",
   name: "Sunset",
-  description: "Burnt orange to deep plum. Warm dusk energy with rich shadow depth.",
+  description:
+    "Burnt orange to deep plum. Warm dusk energy with rich shadow depth.",
   colors: {
     base: "#180d0a",
     mantle: "#221109",
@@ -40,9 +41,10 @@ const sunsetTheme: ThemeDefinition = {
   shadows: {
     card: "0 16px 48px rgba(14,7,4,0.65), 0 0 0 1px rgba(255,136,51,0.12)",
     glow: "0 0 0 2px rgba(255,136,51,0.35), 0 0 24px rgba(204,85,119,0.18)",
-    glowGreen: "0 0 0 2px rgba(136,187,68,0.28), 0 0 18px rgba(68,153,138,0.14)",
+    glowGreen:
+      "0 0 0 2px rgba(136,187,68,0.28), 0 0 18px rgba(68,153,138,0.14)",
   },
   selection: "#4a1e10",
-};
+}
 
-export default sunsetTheme;
+export default sunsetTheme

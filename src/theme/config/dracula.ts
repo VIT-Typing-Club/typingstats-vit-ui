@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const draculaTheme: ThemeDefinition = {
   id: "dracula",
   name: "Dracula",
-  description: "The iconic purple-tinted dark theme. Timeless and developer-beloved.",
+  description:
+    "The iconic purple-tinted dark theme. Timeless and developer-beloved.",
   colors: {
     base: "#282a36",
     mantle: "#21222c",
@@ -40,9 +41,10 @@ const draculaTheme: ThemeDefinition = {
   shadows: {
     card: "0 12px 40px rgba(25,26,33,0.7), 0 0 0 1px rgba(189,147,249,0.12)",
     glow: "0 0 0 2px rgba(189,147,249,0.30), 0 0 22px rgba(255,121,198,0.16)",
-    glowGreen: "0 0 0 2px rgba(80,250,123,0.28), 0 0 18px rgba(128,255,234,0.14)",
+    glowGreen:
+      "0 0 0 2px rgba(80,250,123,0.28), 0 0 18px rgba(128,255,234,0.14)",
   },
   selection: "#44475a",
-};
+}
 
-export default draculaTheme;
+export default draculaTheme

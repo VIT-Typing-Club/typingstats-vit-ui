@@ -1,9 +1,10 @@
-import type { ThemeDefinition } from "@/theme/types";
+import type { ThemeDefinition } from "@/theme/types"
 
 const mangoTangoTheme: ThemeDefinition = {
   id: "mango-tango",
   name: "Mango Tango",
-  description: "Tropical orange and yellow. Vitamin C overload, sun-bleached and vibrant.",
+  description:
+    "Tropical orange and yellow. Vitamin C overload, sun-bleached and vibrant.",
   colors: {
     base: "#ff8c00",
     mantle: "#f07800",
@@ -43,6 +44,6 @@ const mangoTangoTheme: ThemeDefinition = {
     glowGreen: "0 0 0 2px rgba(0,187,68,0.30), 0 0 18px rgba(0,204,153,0.18)",
   },
   selection: "#993300",
-};
+}
 
-export default mangoTangoTheme;
+export default mangoTangoTheme
