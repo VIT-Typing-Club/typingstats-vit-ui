@@ -1,8 +1,8 @@
 import type { ThemeDefinition } from "@/theme/types"
 
 const lightTheme: ThemeDefinition = {
-  id: "terminal-light",
-  name: "Terminal Light",
+  id: "light",
+  name: "Light",
   description:
     "A light mode terminal-inspired palette with soft paper surfaces and high-contrast text.",
   colors: {

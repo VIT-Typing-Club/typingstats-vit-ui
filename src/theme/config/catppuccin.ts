@@ -1,8 +1,8 @@
 import type { ThemeDefinition } from "@/theme/types"
 
 const darkTheme: ThemeDefinition = {
-  id: "terminal-dark",
-  name: "Terminal Dark",
+  id: "catppuccin",
+  name: "Catppuccin",
   description:
     "The original dark terminal palette with deep navy surfaces and neon-leaning accents.",
   colors: {

@@ -58,7 +58,7 @@ export function ThemeSelector() {
             onMouseDown={() => setShowThemeMenu(false)}
           />
           <div
-            className="fixed z-50 bg-crust border border-surface1 flex flex-col min-w-max"
+            className="fixed z-50 bg-crust border border-surface1 flex flex-col min-w-max max-h-72 overflow-auto shadow-lg rounded-md custom-scrollbar"
             style={{ left: menuPos.x, bottom: `calc(100vh - ${menuPos.y}px)` }}
           >
             {themes.map((theme) => (
@@ -67,7 +67,7 @@ export function ThemeSelector() {
                 onClick={() => { setTheme(theme.id); setShowThemeMenu(false) }}
                 className={`px-3 py-0.5 text-left text-xs sm:text-sm transition-colors ${
                   theme.id === activeTheme.id
-                    ? "text-green bg-surface1"
+                    ? "text-lavender bg-surface1"
                     : "text-subtext0 hover:text-text hover:bg-surface0"
                 }`}
               >
