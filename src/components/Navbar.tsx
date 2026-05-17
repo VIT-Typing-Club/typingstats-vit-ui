@@ -43,8 +43,8 @@ export default function Navbar() {
     <nav className="flex items-center justify-between w-full px-2 py-1 bg-crust border-strong font-mono text-xs sm:text-sm select-none overflow-x-auto custom-scrollbar">
       {/* Left Section */}
       <div className="flex items-center space-x-2 sm:space-x-4 shrink-0">
-        <span className="hidden sm:inline-block text-mauve font-bold tracking-widest uppercase text-xs">
-          [typing-stats-vit]
+        <span className="hidden sm:inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-subtext1/80">
+          <span className="border-l border-surface2 pl-2">VIT Typing Club</span>
         </span>
 
         <div className="flex items-center space-x-1">
