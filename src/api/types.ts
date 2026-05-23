@@ -24,6 +24,7 @@ export type UserRanks = {
 }
 
 export type DailyQuote = {
+  quoteId: string
   text: string
   sourceTitle: string
   difficulty: number

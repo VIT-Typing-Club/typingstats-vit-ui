@@ -9,7 +9,6 @@ import { useNow } from "@/hooks/useNow"
 
 export default function DailyCompetitionPage() {
   const user = useAuthStore((s) => s.user)
-
   const quote = useTypeggStore((s) => s.quote)
   const leaderboard = useTypeggStore((s) => s.leaderboard)
   const loading = useTypeggStore((s) => s.loading)
@@ -54,7 +53,7 @@ export default function DailyCompetitionPage() {
 
   const canManualSync = now >= nextManualSyncTime
 
-  let syncButtonText = "> ./sync_score.sh"
+  let syncButtonText = "> sync_score"
   if (syncing) syncButtonText = "> syncing..."
   else if (!canManualSync) syncButtonText = "> ERR: COOLDOWN_ACTIVE"
 
@@ -62,7 +61,7 @@ export default function DailyCompetitionPage() {
     return <div className="p-4 font-mono text-subtext0">Loading pane...</div>
 
   return (
-    <div className="flex flex-col h-full bg-base overflow-hidden">
+    <div className="flex flex-col h-full min-h-0 bg-base overflow-hidden">
       {/* Tmux Pane Header - Fixed */}
       <div className="bg-mantle border-strong px-3 py-1.5 flex justify-between items-center font-mono text-xs uppercase tracking-widest text-subtext0 shrink-0">
         <span>[Daily Competition]</span>
@@ -86,7 +85,14 @@ export default function DailyCompetitionPage() {
       ) : (
         <>
           {/* META BLOCK - Fixed at top, no scrolling */}
-          <div className="bg-crust border-b border-strong p-3 sm:p-4 shrink-0">
+          <div
+            className="
+    bg-crust border-b border-strong
+    p-3 sm:p-4
+    shrink-0
+    min-h-0
+  "
+          >
             <div className="font-mono text-xs text-subtext0 space-y-1">
               <LiveTimers label="next_quote_in  :" targetTime={nextQuoteTime} />
               {user && (
@@ -109,23 +115,60 @@ export default function DailyCompetitionPage() {
 
           {/* SYNC BUTTON - Fixed below meta block */}
           <div className="p-3 sm:p-4 shrink-0 border-b border-strong bg-base">
-            {user ? (
-              <button
-                onClick={syncScore}
-                disabled={syncing || !canManualSync}
-                className="w-full py-1.5 font-mono text-sm border border-lavender/40 text-lavender hover:bg-lavender/10 disabled:opacity-50 disabled:border-overlay0 disabled:text-overlay0 disabled:cursor-not-allowed transition-all"
-              >
-                {syncButtonText}
-              </button>
-            ) : (
-              <p className="text-center text-subtext0 text-xs italic font-mono border border-subtle py-1.5">
-                &gt; Login to manual sync
-              </p>
-            )}
+            <div className="flex gap-2">
+              {quote && (
+                <a
+                  href={`https://typegg.io/solo/${quote.quoteId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+          flex-1 py-1.5 text-center
+          font-mono text-sm
+          border border-green/40
+          text-green
+          hover:bg-green/10
+          transition-all
+        "
+                >
+                  &gt; play
+                </a>
+              )}
+
+              {user ? (
+                <button
+                  onClick={syncScore}
+                  disabled={syncing || !canManualSync}
+                  className="
+          flex-1 py-1.5
+          font-mono text-sm
+          border border-lavender/40
+          text-lavender
+          hover:bg-lavender/10
+          disabled:opacity-50
+          disabled:border-overlay0
+          disabled:text-overlay0
+          disabled:cursor-not-allowed
+          transition-all
+        "
+                >
+                  {syncButtonText}
+                </button>
+              ) : (
+                <p
+                  className="
+          flex-1 text-center
+          text-subtext0 text-xs italic font-mono
+          border border-subtle py-1.5
+        "
+                >
+                  &gt; Login to manual sync
+                </p>
+              )}
+            </div>
           </div>
 
           {/* TABLE WRAPPER */}
-          <div className="flex-1 min-h-0 bg-base">
+          <div className="flex-1 min-h-0 overflow-y-auto bg-base custom-scrollbar">
             <LeaderboardTable leaderboard={leaderboard} />
           </div>
         </>
