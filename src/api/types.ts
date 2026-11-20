@@ -81,6 +81,7 @@ export type UserUpdateRequest = {
 }
 
 export type PublicProfile = {
+  discordId: string | undefined
   displayName: string | null
   discordUsername: string
   avatarUrl: string | null
