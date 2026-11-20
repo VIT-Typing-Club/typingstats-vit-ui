@@ -2,6 +2,7 @@ import { useEffect, useState, memo } from "react"
 import { useParams } from "react-router-dom"
 import { fetchPublicProfile } from "@/api/user"
 import type { PublicProfile } from "@/api/types"
+import TypingStats from "@/components/TypingStats"
 
 interface FetchRowProps {
   label: string
@@ -214,6 +215,12 @@ export default function PublicProfilePage() {
             <span className="text-overlay0">@</span>
             <span className="text-mauve">typing-stats-vit</span>
           </div>
+
+          <div className="text-surface2 font-mono mb-4 select-none">
+            ------------------------------------
+          </div>
+
+          <TypingStats userId={profile.discordId} />
 
           <div className="text-surface2 font-mono mb-4 select-none">
             ------------------------------------

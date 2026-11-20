@@ -16,11 +16,10 @@ export const syncTypeggScore = () =>
 export const fetchMonkeytypeLeaderboard = (
   testType: TestType,
   limit: number = 50,
+  userId?: string,
 ) => {
-  const params = new URLSearchParams({
-    testType,
-    limit: limit.toString(),
-  })
+  const params = new URLSearchParams({ testType, limit: limit.toString() })
+  if (userId) params.set("userId", userId)
 
   return apiClient<MonkeytypeLeaderboardEntry[]>(
     `/api/scores/leaderboard?${params.toString()}`,
